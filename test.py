@@ -3,6 +3,7 @@ from anjuke.HtmlOper import *
 from anjuke.AnjukeInsertDB import *
 from urllib import urlopen
 from bs4 import BeautifulSoup
+import threading
 import time
 
 #anjuke = anjukeOper()

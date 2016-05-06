@@ -1,9 +1,18 @@
 # -*- coding: utf-8 -*-
 from GRFY.Crawler import *
+from ANJUKESOURCE.Crawler import *
+from WUBATONGCHENG.Crawler import *
+from bs4 import BeautifulSoup
+import urllib
+import urllib2
+import cookielib
+from Utils.Opener import *
 import time
 
 try:
-    instance = GRFY(1)
-    instance.crawler("http://sh.grfy.net/rent/list_2_0_0_0-0_0_0-0_0_2_0_1_.html")
+    #模拟登陆至房探主页
+    init()
+    WUBA = WUBATONGCHENG(1)
+    WUBA.crawler("http://sh.fangtan007.com/chuzu/fangwu/w01/")
 except Exception,ex:
     print(ex)

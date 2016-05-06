@@ -11,7 +11,7 @@ sys.setdefaultencoding('utf-8')
 class SqliteOpenClass:
     def __init__(self):
         self.lock = threading.RLock()
-        self.dbpath = 'F:\项目文档\SpiderCrawler\HouseDB\HouseInfo'
+        self.dbpath = 'E:\python_project\spiderRent\HouseDB\HouseInfo'
 
     def get_conn(self):
         conn = sqlite3.connect( self.dbpath )
@@ -46,6 +46,17 @@ class SqliteOpenClass:
                 print(row)
         self.conn_close(connection)
         return arr
+
+    def getestatearea(self,estatename):
+        sql = "SELECT AREANAME FROM ESTATELINK where ESTATENAME = '{0}'".format(estatename)
+        connection = self.get_conn()
+        cur = connection.execute(sql)
+        time.sleep(0.01)
+        if cur.arraysize == 0:
+            self.conn_close(connection)
+            return ''
+        self.conn_close(connection)
+        return cur[0]
 
     def getestatename(self,name,address):
         "小区名字重复性判断"

@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7082206a-dac2-4f2c-8e44-33b016a484da" name="Default" comment="" />
+    <list default="true" id="7082206a-dac2-4f2c-8e44-33b016a484da" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ANJUKESOURCE/Crawler.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ANJUKESOURCE/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Utils/Opener.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WUBATONGCHENG/Crawler.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WUBATONGCHENG/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HouseDB/HouseInfo" afterPath="$PROJECT_DIR$/HouseDB/HouseInfo" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CrawlerMain.py" afterPath="$PROJECT_DIR$/CrawlerMain.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GRFY/Crawler.py" afterPath="$PROJECT_DIR$/GRFY/Crawler.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sqliteOper/Operations.py" afterPath="$PROJECT_DIR$/sqliteOper/Operations.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.py" afterPath="$PROJECT_DIR$/test.py" />
+    </list>
     <ignored path="SpiderCrawler.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -16,7 +28,7 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/SpiderCrawler$HtmlOper.coverage" NAME="HtmlOper Coverage Results" MODIFIED="1461294590847" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/anjuke" />
     <SUITE FILE_PATH="coverage/SpiderCrawler$Operations.coverage" NAME="Operations Coverage Results" MODIFIED="1461198722454" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/sqliteOper" />
-    <SUITE FILE_PATH="coverage/SpiderCrawler$CrawlerMain.coverage" NAME="CrawlerMain Coverage Results" MODIFIED="1462495000751" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SpiderCrawler$CrawlerMain.coverage" NAME="CrawlerMain Coverage Results" MODIFIED="1462547494916" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SpiderCrawler$test.coverage" NAME="test Coverage Results" MODIFIED="1461504947066" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
@@ -32,9 +44,10 @@
         <entry file="file://$PROJECT_DIR$/GRFY/Crawler.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="14" column="31" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
+              <caret line="66" column="37" selection-start-line="66" selection-start-column="37" selection-end-line="66" selection-end-column="37" />
               <folding>
                 <element signature="e#24#50#0" expanded="true" />
+                <element signature="e#227#327#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -44,28 +57,29 @@
         <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+              <caret line="5" column="16" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Operations.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sqliteOper/Operations.py">
+      <file leaf-file-name="wenti.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/wenti.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.0">
+              <caret line="6" column="62" selection-start-line="6" selection-start-column="62" selection-end-line="6" selection-end-column="62" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CrawlerMain.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CrawlerMain.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="49" column="41" selection-start-line="49" selection-start-column="41" selection-end-line="49" selection-end-column="41" />
+              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
               <folding>
-                <element signature="e#421#433#0" expanded="false" />
-                <element signature="e#478#495#0" expanded="false" />
-                <element signature="e#561#864#0" expanded="false" />
-                <element signature="e#903#1271#0" expanded="false" />
-                <element signature="e#1990#2218#0" expanded="false" />
-                <element signature="e#2276#2490#0" expanded="false" />
-                <element signature="e#2568#2878#0" expanded="false" />
-                <element signature="e#3109#3795#0" expanded="false" />
-                <element signature="e#4081#4929#0" expanded="false" />
-                <element signature="e#4981#5161#0" expanded="false" />
+                <element signature="e#24#50#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -75,32 +89,88 @@
         <entry file="file://$PROJECT_DIR$/Utils/UtilToolFunc.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="6" column="51" selection-start-line="6" selection-start-column="51" selection-end-line="6" selection-end-column="51" />
+              <caret line="26" column="23" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
               <folding>
-                <element signature="e#13#22#0" expanded="true" />
+                <element signature="e#276#710#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HtmlOper.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/anjuke/HtmlOper.py">
+      <file leaf-file-name="Opener.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Utils/Opener.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="75" column="24" selection-start-line="75" selection-start-column="24" selection-end-line="75" selection-end-column="24" />
+              <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+              <folding>
+                <element signature="e#24#37#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Crawler.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/WUBATONGCHENG/Crawler.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.60727274">
+              <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
+              <folding>
+                <element signature="e#24#50#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Operations.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sqliteOper/Operations.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="49" column="21" selection-start-line="49" selection-start-column="8" selection-end-line="49" selection-end-column="21" />
+              <folding>
+                <element signature="e#428#440#0" expanded="false" />
+                <element signature="e#485#502#0" expanded="false" />
+                <element signature="e#568#871#0" expanded="false" />
+                <element signature="e#1714#2335#0" expanded="false" />
+                <element signature="e#2381#2609#0" expanded="false" />
+                <element signature="e#2667#2881#0" expanded="false" />
+                <element signature="e#2959#3269#0" expanded="false" />
+                <element signature="e#3500#4186#0" expanded="false" />
+                <element signature="e#5372#5552#0" expanded="false" />
+                <marker date="1462520613920" expanded="true" signature="668:711" placeholder="INSERT INTO Dics... " />
+                <marker date="1462520613920" expanded="true" signature="917:985" placeholder="SELECT ESTAT... ESTATELINK" />
+                <marker date="1462520613920" expanded="true" signature="1335:1387" placeholder="SELECT AREAN... ESTATELINK" />
+                <marker date="1462520613920" expanded="true" signature="1335:1390" placeholder="SELECT AREAN... ESTATELINK" />
+                <marker date="1462520613920" expanded="true" signature="1335:1391" placeholder="SELECT AREAN... ESTATELINK" />
+                <marker date="1462520613920" expanded="true" signature="1769:1894" placeholder="SELECT Alias... EstateAlias" />
+                <marker date="1462520613920" expanded="true" signature="2080:2130" placeholder="INSERT INTO UnKnownEstateName... " />
+                <marker date="1462520613920" expanded="true" signature="2388:2450" placeholder="UPDATE ESTAT... " />
+                <marker date="1462520613920" expanded="true" signature="2674:2723" placeholder="INSERT INTO ESTATELINK... " />
+                <marker date="1462520613920" expanded="true" signature="2966:3085" placeholder="INSERT INTO AREA... " />
+                <marker date="1462520613920" expanded="true" signature="3508:3841" placeholder="INSERT INTO Estate... " />
+                <marker date="1462520613920" expanded="true" signature="4594:4674" placeholder="INSERT INTO House... " />
+                <marker date="1462520613920" expanded="true" signature="4810:4942" placeholder="INSERT INTO HouseInfo... " />
+                <marker date="1462520613920" expanded="true" signature="5379:5421" placeholder="INSERT INTO UnKnownDescWord... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="urllib.py" pinned="false" current-in-tab="false">
+        <entry file="file://E:/Python27/Lib/urllib.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="86" column="0" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CrawlerMain.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/CrawlerMain.py">
+      <file leaf-file-name="AnjukeInsertDB.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/anjuke/AnjukeInsertDB.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.29980275">
-              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-              <folding>
-                <element signature="e#24#50#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.0">
+              <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -115,6 +185,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -123,12 +196,17 @@
         <option value="$PROJECT_DIR$/anjuke/HtmlOper.py" />
         <option value="$PROJECT_DIR$/wenti.html" />
         <option value="$PROJECT_DIR$/zhengque.html" />
-        <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/GRFY/__init__.py" />
-        <option value="$PROJECT_DIR$/CrawlerMain.py" />
-        <option value="$PROJECT_DIR$/sqliteOper/Operations.py" />
         <option value="$PROJECT_DIR$/Utils/UtilToolFunc.py" />
         <option value="$PROJECT_DIR$/GRFY/Crawler.py" />
+        <option value="$PROJECT_DIR$/ANJUKESOURCE/Crawler.py" />
+        <option value="$PROJECT_DIR$/GANJI/Crawler.py" />
+        <option value="$PROJECT_DIR$/sqliteOper/Operations.py" />
+        <option value="$PROJECT_DIR$/FANGTAN/Crawler.py" />
+        <option value="$PROJECT_DIR$/test.py" />
+        <option value="$PROJECT_DIR$/CrawlerMain.py" />
+        <option value="$PROJECT_DIR$/Utils/Opener.py" />
+        <option value="$PROJECT_DIR$/WUBATONGCHENG/Crawler.py" />
       </list>
     </option>
   </component>
@@ -140,8 +218,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -184,8 +262,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -204,7 +280,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="SpiderCrawler" />
+              <option name="myItemId" value="spiderRent" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -214,7 +290,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="SpiderCrawler" />
+              <option name="myItemId" value="spiderRent" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -228,7 +304,35 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="spiderRent" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="anjuke" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
               <option name="myItemId" value="SpiderCrawler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spiderRent" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WUBATONGCHENG" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SpiderCrawler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spiderRent" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -242,7 +346,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="SpiderCrawler" />
+              <option name="myItemId" value="spiderRent" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -252,13 +356,15 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="E:/Python27/python.exe" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://E:/python_project/SpiderCrawler/anjuke/AnjukeInsertDB.py" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
@@ -343,6 +449,57 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
+    <configuration default="true" type="DjangoTestsConfigurationType" factoryName="Django tests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="SpiderCrawler" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="TARGET" value="" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="PyBehaveRunConfigurationType" factoryName="Behave">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="SpiderCrawler" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="ADDITIONAL_ARGS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PyLettuceRunConfigurationType" factoryName="Lettuce">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="SpiderCrawler" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="ADDITIONAL_ARGS" value="" />
+      <method />
+    </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -359,6 +516,20 @@
       <option name="SCRIPT_NAME" value="" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run-script" />
+      <scripts />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Attests">
@@ -500,26 +671,26 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18333334" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18910742" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3283582" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38372093" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32769555" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.43340382" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.502455" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -536,6 +707,18 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/FANGTAN/Crawler.py</url>
+          <line>54</line>
+          <option name="timeStamp" value="259" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/WUBATONGCHENG/Crawler.py</url>
+          <line>55</line>
+          <option name="timeStamp" value="282" />
+        </line-breakpoint>
+      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
@@ -546,40 +729,43 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="236" />
+      <option name="time" value="283" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
-        <watch expression="cur" language="Python" />
+        <watch expression="Urls" language="Python" />
       </configuration>
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/GRFY/Crawler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#24#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sqliteOper/Operations.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="116" column="0" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
           <folding>
-            <element signature="e#421#433#0" expanded="false" />
-            <element signature="e#478#495#0" expanded="false" />
-            <element signature="e#561#864#0" expanded="false" />
-            <element signature="e#903#1271#0" expanded="false" />
-            <element signature="e#1990#2218#0" expanded="false" />
-            <element signature="e#2276#2490#0" expanded="false" />
-            <element signature="e#2568#2878#0" expanded="false" />
-            <element signature="e#3109#3795#0" expanded="false" />
-            <element signature="e#4081#4929#0" expanded="false" />
-            <element signature="e#4981#5161#0" expanded="false" />
+            <element signature="e#428#440#0" expanded="false" />
+            <element signature="e#485#502#0" expanded="false" />
+            <element signature="e#568#871#0" expanded="false" />
+            <element signature="e#1714#2335#0" expanded="false" />
+            <element signature="e#2381#2609#0" expanded="false" />
+            <element signature="e#2667#2881#0" expanded="false" />
+            <element signature="e#2959#3269#0" expanded="false" />
+            <element signature="e#3500#4186#0" expanded="false" />
+            <element signature="e#5372#5552#0" expanded="false" />
+            <marker date="1462520613920" expanded="true" signature="668:711" placeholder="INSERT INTO Dics... " />
+            <marker date="1462520613920" expanded="true" signature="917:985" placeholder="SELECT ESTAT... ESTATELINK" />
+            <marker date="1462520613920" expanded="true" signature="1335:1387" placeholder="SELECT AREAN... ESTATELINK" />
+            <marker date="1462520613920" expanded="true" signature="1335:1390" placeholder="SELECT AREAN... ESTATELINK" />
+            <marker date="1462520613920" expanded="true" signature="1335:1391" placeholder="SELECT AREAN... ESTATELINK" />
+            <marker date="1462520613920" expanded="true" signature="1769:1894" placeholder="SELECT Alias... EstateAlias" />
+            <marker date="1462520613920" expanded="true" signature="2080:2130" placeholder="INSERT INTO UnKnownEstateName... " />
+            <marker date="1462520613920" expanded="true" signature="2388:2450" placeholder="UPDATE ESTAT... " />
+            <marker date="1462520613920" expanded="true" signature="2674:2723" placeholder="INSERT INTO ESTATELINK... " />
+            <marker date="1462520613920" expanded="true" signature="2966:3085" placeholder="INSERT INTO AREA... " />
+            <marker date="1462520613920" expanded="true" signature="3508:3841" placeholder="INSERT INTO Estate... " />
+            <marker date="1462520613920" expanded="true" signature="4594:4674" placeholder="INSERT INTO House... " />
+            <marker date="1462520613920" expanded="true" signature="4810:4942" placeholder="INSERT INTO HouseInfo... " />
+            <marker date="1462520613920" expanded="true" signature="5379:5421" placeholder="INSERT INTO UnKnownDescWord... " />
           </folding>
         </state>
       </provider>
@@ -598,7 +784,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="75" column="24" selection-start-line="75" selection-start-column="24" selection-end-line="75" selection-end-column="24" />
-          <folding />
+          <folding>
+            <element signature="e#170#2924#0" expanded="false" />
+            <element signature="e#2962#5626#0" expanded="false" />
+            <element signature="e#5664#7901#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -623,9 +813,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#24#53#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -661,9 +849,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#24#53#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -699,9 +885,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="30" column="19" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
-          <folding>
-            <element signature="e#24#53#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -758,9 +942,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding>
-            <element signature="e#24#53#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -834,20 +1016,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wenti.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2091743">
-          <caret line="6" column="62" selection-start-line="6" selection-start-column="62" selection-end-line="6" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GRFY/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sqliteOper/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -863,56 +1031,96 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/anjuke/AnjukeInsertDB.py">
+    <entry file="file://$PROJECT_DIR$/ANJUKESOURCE/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GRFY/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/anjuke/HtmlOper.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="75" column="24" selection-start-line="75" selection-start-column="24" selection-end-line="75" selection-end-column="24" />
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+          <folding>
+            <element signature="e#170#2924#0" expanded="false" />
+            <element signature="e#2962#5626#0" expanded="false" />
+            <element signature="e#5664#7901#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/anjuke/AnjukeInsertDB.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://E:/Python27/Lib/urllib.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="86" column="0" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://E:/Python27/Lib/urllib2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="414" column="0" selection-start-line="414" selection-start-column="0" selection-end-line="414" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ANJUKESOURCE/Crawler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="65" selection-start-line="23" selection-start-column="12" selection-end-line="24" selection-end-column="65" />
+          <folding>
+            <element signature="e#24#50#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sqliteOper/Operations.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="49" column="41" selection-start-line="49" selection-start-column="41" selection-end-line="49" selection-end-column="41" />
+          <caret line="49" column="21" selection-start-line="49" selection-start-column="8" selection-end-line="49" selection-end-column="21" />
           <folding>
-            <element signature="e#421#433#0" expanded="false" />
-            <element signature="e#478#495#0" expanded="false" />
-            <element signature="e#561#864#0" expanded="false" />
-            <element signature="e#903#1271#0" expanded="false" />
-            <element signature="e#1990#2218#0" expanded="false" />
-            <element signature="e#2276#2490#0" expanded="false" />
-            <element signature="e#2568#2878#0" expanded="false" />
-            <element signature="e#3109#3795#0" expanded="false" />
-            <element signature="e#4081#4929#0" expanded="false" />
-            <element signature="e#4981#5161#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Utils/UtilToolFunc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="51" selection-start-line="6" selection-start-column="51" selection-end-line="6" selection-end-column="51" />
-          <folding>
-            <element signature="e#13#22#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GRFY/Crawler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="31" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
-          <folding>
-            <element signature="e#24#50#0" expanded="true" />
+            <element signature="e#428#440#0" expanded="false" />
+            <element signature="e#485#502#0" expanded="false" />
+            <element signature="e#568#871#0" expanded="false" />
+            <element signature="e#1714#2335#0" expanded="false" />
+            <element signature="e#2381#2609#0" expanded="false" />
+            <element signature="e#2667#2881#0" expanded="false" />
+            <element signature="e#2959#3269#0" expanded="false" />
+            <element signature="e#3500#4186#0" expanded="false" />
+            <element signature="e#5372#5552#0" expanded="false" />
+            <marker date="1462520613920" expanded="true" signature="668:711" placeholder="INSERT INTO Dics... " />
+            <marker date="1462520613920" expanded="true" signature="917:985" placeholder="SELECT ESTAT... ESTATELINK" />
+            <marker date="1462520613920" expanded="true" signature="1335:1387" placeholder="SELECT AREAN... ESTATELINK" />
+            <marker date="1462520613920" expanded="true" signature="1335:1390" placeholder="SELECT AREAN... ESTATELINK" />
+            <marker date="1462520613920" expanded="true" signature="1335:1391" placeholder="SELECT AREAN... ESTATELINK" />
+            <marker date="1462520613920" expanded="true" signature="1769:1894" placeholder="SELECT Alias... EstateAlias" />
+            <marker date="1462520613920" expanded="true" signature="2080:2130" placeholder="INSERT INTO UnKnownEstateName... " />
+            <marker date="1462520613920" expanded="true" signature="2388:2450" placeholder="UPDATE ESTAT... " />
+            <marker date="1462520613920" expanded="true" signature="2674:2723" placeholder="INSERT INTO ESTATELINK... " />
+            <marker date="1462520613920" expanded="true" signature="2966:3085" placeholder="INSERT INTO AREA... " />
+            <marker date="1462520613920" expanded="true" signature="3508:3841" placeholder="INSERT INTO Estate... " />
+            <marker date="1462520613920" expanded="true" signature="4594:4674" placeholder="INSERT INTO House... " />
+            <marker date="1462520613920" expanded="true" signature="4810:4942" placeholder="INSERT INTO HouseInfo... " />
+            <marker date="1462520613920" expanded="true" signature="5379:5421" placeholder="INSERT INTO UnKnownDescWord... " />
           </folding>
         </state>
       </provider>
@@ -920,17 +1128,64 @@
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+          <caret line="5" column="16" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wenti.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.0">
+          <caret line="6" column="62" selection-start-line="6" selection-start-column="62" selection-end-line="6" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Utils/UtilToolFunc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="23" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
           <folding>
-            <element signature="e#24#53#0" expanded="false" />
+            <element signature="e#276#710#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GRFY/Crawler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="66" column="37" selection-start-line="66" selection-start-column="37" selection-end-line="66" selection-end-column="37" />
+          <folding>
+            <element signature="e#24#50#0" expanded="true" />
+            <element signature="e#227#327#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CrawlerMain.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29980275">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding>
+            <element signature="e#24#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Utils/Opener.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding>
+            <element signature="e#24#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WUBATONGCHENG/Crawler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.60727274">
+          <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
           <folding>
             <element signature="e#24#50#0" expanded="true" />
           </folding>

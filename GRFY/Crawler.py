@@ -45,7 +45,6 @@ class GRFY:
                 except:
                     continue
 
-
     def crawler_level2(self,SearchUrl):
         html = urlopen(self.BaseUrl + SearchUrl)
         bsObj = BeautifulSoup(html.read())
@@ -87,6 +86,7 @@ class GRFY:
                 return
         except Exception,ex:
             print(ex)
+            print(SearchUrl)
             pass
 
 
