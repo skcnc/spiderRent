@@ -135,6 +135,17 @@ class SqliteOpenClass:
         conn.commit()
         conn.close()
 
+    def insertpiclinks(self,id,links):
+        if len(links) == 0:
+            return
+
+        sql = "INSERT INTO HousePicLinks VALUES('{0}','{1}')".format(id,links)
+        conn = sqlite3.connect(self.dbpath)
+        conn.execute(sql)
+        conn.commit()
+        conn.close()
+
+
 
 
 

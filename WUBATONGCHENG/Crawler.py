@@ -65,46 +65,94 @@ class WUBATONGCHENG(threading.Thread):
             sourceHtml = urlopen(SourceUrl)
             sourcebsObj = BeautifulSoup(sourceHtml.read())
             price = sourcebsObj.findAll("em",{"class","house-price"})[0].string
-            rooms = sourcebsObj.findAll("div",{"class","house-type"})[0].string.split('-')[0]
-            square = sourcebsObj.findAll("div",{"class","house-type"})[0].string.split('-')[0]
-            EstateName = sourcebsObj.findAll("div",{"class","xiaoqu"})[0].contents[1].string
-            Distinct = sourcebsObj.findAll("div",{"class","xiaoqu"})[0].contents[0].string
-            Area =sourcebsObj.findAll("div",{"class","xiaoqu"})[0].contents[1].string
-            Sqlite = SqliteOpenClass()
-            Address = ''
-            Orientation = bsObj.findAll("dl",{"class","p_phrase"})[8].contents[3].string
-            type = bsObj.findAll("dl",{"class","p_phrase"})[10].contents[3].string
-            floor =bsObj.findAll("dl",{"class","p_phrase"})[9].contents[3].string.split('/')[0]
-            floorAll = bsObj.findAll("dl",{"class","p_phrase"})[9].contents[3].string.split('/')[1]
-            LandLadyName = bsObj.findAll(id='broker_true_name')[0].string
-            LandLadyPhone = bsObj.findAll("div",{"class","broker_tel"})[0].contents[1]
-            appliance = ''
-            try:
-                content = bsObj.findAll("div",{"class","pro_links"})[0].contents[1]
-                for ele in content:
-                    if ele.name == 'span':
-                        appliance += ele.text + '/'
-            except:
-                appliance = '未知'
 
-            describe = bsObj.findAll("div",{"class","pro_con"})[0].text
+            square = ''
+            floorAll = ''
+            floor = ''
+            decoration = ''
+            Orientation = ''
+            type = ''
+            LandLadyName = ''
+            Address = ''
+            appliance = ''
+            for ele in sourcebsObj.findAll("li",{"class","house-primary-content-li"}):
+                try:
+                    prop = ele.contents[1].string
+                except:
+                    continue;
+                if "房屋" in prop:
+                    try:
+                        roomprops1 = re.sub('[\t\r\n ]','',ele.contents[3].contents[0].string).split('-')
+                        for state in roomprops1:
+                            if "室" in state and '卫' in state:
+                                rooms = state
+                            elif 'm²' in state:
+                                square = state
+                            elif '/' in state and '层' in state:
+                                floor = re.findall('\d+',state)[0]
+                                floorAll = re.findall('\d+',state)[1]
+                    except:
+                        pass
+                    try:
+                        roomprops2 = re.sub('[\t\r\n ]','',ele.contents[3].contents[2].string).split('-')
+                        for state in roomprops2:
+                            if '装修' in state:
+                                decoration = state
+                            elif '东' in state or '西' in state or '南' in state or '北' in state:
+                                Orientation = state
+                            else :
+                                type = state
+                    except:
+                        pass
+                elif "小区" in prop:
+                    position = re.sub('[\t\n\r ]','',ele.contents[3].text).split('-')
+                    Distinct = position[0]
+                    if len(position) == 3:
+                        Area = position[1]
+                    else:
+                        Area = ''
+
+                    EstateName = position[len(position)-1]
+                    if '(' in EstateName:
+                        EstateName = EstateName.split('(')[0]
+                    elif '（' in EstateName:
+                        EstateName = EstateName.split('（')[0]
+
+                elif "地址" in prop:
+                    Address = re.sub('[\t\n\r ]','',ele.contents[3].text)
+                elif "配置" in prop:
+                    appliance = re.sub('[\t\n\r ]','',ele.contents[3].text)
+                elif "联系" in prop:
+                    try:
+                        LandLadyName = re.findall('([\W]+)\(',re.sub('[\r\n\t ]','',ele.contents[3].text))[0]
+                    except:
+                        pass
+
+            #图片列表
+            pics = ''
+            for ele in sourcebsObj.findAll("li",{"class","house-images-wrap"}):
+                pics += ele.contents[0].attrs['lazy_src'] + "|"
+
+            Sqlite = SqliteOpenClass()
+
+            describe = re.sub('[\r\n\t ]','',sourcebsObj.findAll("div",{"class","description-content"})[0].text)
 
             standardName = Sqlite.getestatename(EstateName,Address)
 
-            countr =  re.findall("\d+",rooms)[0]
-            counth =  re.findall("\d+",rooms)[1]
-            countt =  re.findall("\d+",rooms)[2]
+            countr =  re.findall(unicode("(\d+)室"),rooms)[0]
+            counth =  re.findall(unicode("(\d+)厅"),rooms)[0]
+            countt =  re.findall(unicode("(\d+)卫"),rooms)[0]
 
             #判断房源类型类型，根据描述中关键词判断
             sourceType = "个人房源"
-
             if standardName == '':
                 return
             else :
                 id = uuid.uuid1()
-                Sqlite.inserthouse(id,EstateName,floorAll,floor,'','unknown','unknown',type,"整租","普通装修",
+                Sqlite.insertpiclinks(id,pics)
+                Sqlite.inserthouse(id,EstateName,floorAll,floor,'','unknown','unknown',type,"整租",decoration,
                                    sourceType,LandLadyName,LandLadyPhone,price,"面议",countt,counth,countr,square,
-                                   Orientation,'', SearchUrl)
+                                   Orientation,appliance, SourceUrl)
                 return
         except Exception,ex:
             print(ex)
