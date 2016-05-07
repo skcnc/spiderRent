@@ -14,6 +14,7 @@ try:
     #模拟登陆至房探主页
     init()
     GANJI_thread = GANJI(1)
-    GANJI_thread.crawler("http://sh.fangtan007.com/chuzu/fangwu/w02/")
+    #GANJI_thread.crawler("http://sh.fangtan007.com/chuzu/fangwu/w02/")
+    GANJI_thread.crawler_level2("http://sh.fangtan007.com/fangwu/7295753.html")
 except Exception,ex:
     print(ex)
