@@ -76,18 +76,21 @@ class GANJI(threading.Thread):
             Address = ''
             appliance = ''
             rentType=''
+            counth = '0'
+            countr = '0'
+            countt = '0'
             for ele in sourcebsObj.findAll("ul",{"class","basic-info-ul"})[0].contents:
                 try:
                     prop = re.sub('[\t\r\n ]','',ele.text)
                 except:
-                    continue;
+`                    continue;
                 if "户型" in prop:
                     try:
                         roomprops1 = prop.split('-')
                         for state in roomprops1:
                             if "室" in state and '卫' in state:
                                 rooms = state
-                            elif 'm²' in state:
+                            elif '㎡' in state:
                                 square = state
                             else:
                                 rentType = state
@@ -102,45 +105,40 @@ class GANJI(threading.Thread):
                         else:
                             type = state
                 elif "小区" in prop:
-                    position = re.sub('[\t\n\r ]','',ele.contents[3].text).split('-')
-                    Distinct = position[0]
-                    if len(position) == 3:
-                        Area = position[1]
-                    else:
-                        Area = ''
-
-                    EstateName = position[len(position)-1]
-                    if '(' in EstateName:
-                        EstateName = EstateName.split('(')[0]
-                    elif '（' in EstateName:
-                        EstateName = EstateName.split('（')[0]
+                    EstateName = re.findall(unicode('：([\W|\w]+)[-|\（]'),prop)[0]
                 elif "楼层" in prop:
                     floor = re.findall('(\d+)',prop)[0]
                     floorAll = re.findall('(\d+)',prop)[1]
+                elif "位置" in prop:
+                    position = re.findall(unicode('：([\W]+)','utf8'),re.sub(' ','',sourcebsObj.findAll("ul",{"class","basic-info-ul"})[0].contents[11].text))[0].split('-')
+                    Distinct = position[1]
+                    if len(position) == 2:
+                        Area = position[1]
+                    else:
+                        Area = position[2]
                 elif "地址" in prop:
                     Address = re.sub('[\t\n\r ]','',ele.contents[3].text)
                 elif "配置" in prop:
-                    appliance = re.sub('[\t\n\r ]','',ele.contents[3].text)
-                elif "联系" in prop:
-                    try:
-                        LandLadyName = re.findall('([\W]+)\(',re.sub('[\r\n\t ]','',ele.contents[3].text))[0]
-                    except:
-                        pass
+                    appliance = prop.split('：')[1]
+
+            LandLadyName = re.findall(unicode('：([\W]+)\(','utf8'),re.sub('[\r\n\t ]','',sourcebsObj.findAll("span",{"class","contact-col"})[0].text))[0]
 
             #图片列表
             pics = ''
-            for ele in sourcebsObj.findAll("li",{"class","house-images-wrap"}):
-                pics += ele.contents[0].attrs['lazy_src'] + "|"
+            if len(sourcebsObj.findAll("div",{"class","pics"})) > 0:
+                for ele in sourcebsObj.findAll("div",{"class","pics"})[0].findAll("img"):
+                    pics += ele.attrs['src'] + "|"
 
             Sqlite = SqliteOpenClass()
 
-            describe = re.sub('[\r\n\t ]','',sourcebsObj.findAll("div",{"class","description-content"})[0].text)
+            describe = re.sub('[\r\n\t ]','',sourcebsObj.findAll('div',{"class","summary-cont"})[0].text)
 
             standardName = Sqlite.getestatename(EstateName,Address)
 
             countr =  re.findall(unicode("(\d+)室"),rooms)[0]
-            counth =  re.findall(unicode("(\d+)厅"),rooms)[0]
             countt =  re.findall(unicode("(\d+)卫"),rooms)[0]
+            if len(re.findall(unicode("(\d+)厅"),rooms)) > 0:
+                counth =  re.findall(unicode("(\d+)厅"),rooms)[0]
 
             #判断房源类型类型，根据描述中关键词判断
             sourceType = "个人房源"
