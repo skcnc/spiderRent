@@ -150,7 +150,7 @@ class GANJI(threading.Thread):
                 Sqlite.insertpiclinks(id,pics)
                 Sqlite.inserthouse(id,EstateName,floorAll,floor,'','unknown','unknown',type,rentType,decoration,
                                    sourceType,LandLadyName,LandLadyPhone,price,"面议",countt,counth,countr,square,
-                                   Orientation,appliance, SearchUrl)
+                                   Orientation,appliance, SearchUrl,describe)
                 return
         except Exception,ex:
             print(ex)

@@ -81,6 +81,19 @@ class SqliteOpenClass:
         connection.commit()
         self.conn_close(connection)
 
+    def getestatelinkwithname(self,name):
+        sql = "SELECT AREANAME FROM ESTATELINK WHERE ESTATENAME LIKE '%{0}%'".format(name)
+        connection = self.get_conn()
+        value = connection.execute(sql)
+        connection.commit()
+        r = value.fetchall()
+        if value.arraysize > 0:
+            self.conn_close(connection)
+            return r[0]
+        else:
+            self.conn_close(connection)
+            return ''
+
     def insertestatelink(self,area, name,link):
         sql = "INSERT INTO ESTATELINK VALUES ('{0}','{1}','{2}')".format(area ,name,link)
         connection = self.get_conn()
@@ -111,7 +124,7 @@ class SqliteOpenClass:
 
     def inserthouse(self,houseId,EstateName,FloorAll,Floor,FloorLevel,RoomNum,BuildingNo,Type,RentType,
                     Decoration,HouseSourceType,LandladyName,LandLadyPhone,RentPrice,PriceType,CountT,CountH,CountR,
-                    Square,Orientation,Appliance,link):
+                    Square,Orientation,Appliance,link,descibe):
         ISOTIMEFORMAT="%Y-%m-%d %X"
         curtime = time.strftime(ISOTIMEFORMAT, time.localtime())
 
@@ -120,7 +133,7 @@ class SqliteOpenClass:
 
         sql_insert_houseinfo = "INSERT INTO HouseInfo VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}')".format(
             houseId,RentType,Decoration,HouseSourceType,LandladyName,LandLadyPhone,RentPrice,RentType,str(CountT),str(CountH),str(CountR),str(Square),
-            Orientation,Appliance,curtime,link)
+            Orientation,Appliance,curtime,link,descibe)
 
         conn = sqlite3.connect(self.dbpath)
         conn.execute(sql_insert_house)

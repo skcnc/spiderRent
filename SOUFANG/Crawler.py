@@ -6,6 +6,8 @@ from bs4 import BeautifulSoup
 import re
 import threading
 from Utils.Opener import *
+from StringIO import StringIO
+import gzip
 
 class SOUFANG(threading.Thread):
     "赶集网"
@@ -22,8 +24,8 @@ class SOUFANG(threading.Thread):
     def stop(self):
         self.thread_stop = True
 
-    def crawler(self,StartUrl):
-        "http://sh.fangtan007.com/fangwu/w01/"
+    def crawler(self):
+        "http://sh.fangtan007.com/fangwu/w05/"
         urlbuff = ''
         while self.thread_stop == False:
             if urlbuff != '':
@@ -31,7 +33,7 @@ class SOUFANG(threading.Thread):
             urlbuff = ''
             import time
             time.sleep(3)  #每隔30s 启动一次查询
-            bsObj = getbsobj(StartUrl)
+            bsObj = getbsobj(self.StartUrl)
             UrlList = bsObj.findAll("div",{'class','sub-left-list'})[0].contents[1]
             count = 0
             for EleLi in UrlList:
@@ -63,9 +65,17 @@ class SOUFANG(threading.Thread):
                     break
             if SourceUrl == '':
                 return
-            sourceHtml = urlopen(SourceUrl)
-            sourcebsObj = BeautifulSoup(sourceHtml.read())
-            price = sourcebsObj.findAll("b",{"class","basic-info-price"})[0].contents[0].string
+
+            request = urllib2.Request(SourceUrl)
+            request.add_header('Accept-encoding', 'gzip')
+            response = urllib2.urlopen(request)
+            sourcebsObj = ''
+            if response.info().get('Content-Encoding') == 'gzip':
+                buf = StringIO( response.read())
+                f = gzip.GzipFile(fileobj=buf)
+                data = unicode(f.read(),'gbk')
+                #data = re.sub('\<script[\S|\s]+?script\>','',data)
+                sourcebsObj = BeautifulSoup(data)
 
             square = ''
             floorAll = ''
@@ -76,63 +86,59 @@ class SOUFANG(threading.Thread):
             LandLadyName = ''
             Address = ''
             appliance = ''
-            rentType=''
+            rentType= '不限'
             counth = '0'
             countr = '0'
             countt = '0'
-            for ele in sourcebsObj.findAll("ul",{"class","basic-info-ul"})[0].contents:
-                try:
-                    prop = re.sub('[\t\r\n ]','',ele.text)
-                except:
-                   continue
-                if "户型" in prop:
-                    try:
-                        roomprops1 = prop.split('-')
-                        for state in roomprops1:
-                            if "室" in state and '卫' in state:
-                                rooms = state
-                            elif '㎡' in state:
-                                square = state
-                            else:
-                                rentType = state
-                    except:
-                        pass
-                elif "概况" in prop:
-                    for state in prop.split('：')[1].split('-'):
-                        if '装修' in state or "毛坯" in state:
-                            decoration = state
-                        elif '东' in state or '西' in state or '南' in state or '北' in state:
-                            Orientation = state
-                        else:
-                            type = state
-                elif "小区" in prop:
-                    EstateName = re.findall(unicode('：([\W|\w]+)[-|\（|\(]'),prop)[0]
-                elif "楼层" in prop:
-                    floor = re.findall('(\d+)',prop)[0]
-                    floorAll = re.findall('(\d+)',prop)[1]
-                elif "位置" in prop:
-                    position = re.findall(unicode('：([\W]+)','utf8'),re.sub(' ','',sourcebsObj.findAll("ul",{"class","basic-info-ul"})[0].contents[11].text))[0].split('-')
-                    Distinct = position[1]
-                    if len(position) == 2:
-                        Area = position[1]
-                    else:
-                        Area = position[2]
-                elif "地址" in prop:
-                    Address = re.sub('[\t\n\r ]','',ele.contents[3].text)
-                elif "配置" in prop:
-                    appliance = prop.split('：')[1]
+            describe = ''
 
-            LandLadyName = re.findall(unicode('：([\W|\w]+)\(','utf8'),re.sub('[\r\n\t ]','',sourcebsObj.findAll("span",{"class","contact-col"})[0].text))[0]
+            for ele in sourcebsObj.findAll("ul",{"class","house-info"})[0]:
+                try:
+                    text = re.sub('[\r\n\t ]','',ele.text)
+                except:
+                    continue
+                if '租金' in text:
+                    price = ele.contents[1].string
+                elif '概况' in text:
+                    props = text.split('：')[1].split('|')
+                    for con in props:
+                        if '室' in con:
+                            rooms = con
+                        elif 'm²' in con:
+                            square = con
+                        elif '/' in con and '层' in con:
+                            floor = re.findall('\d+',con)[0]
+                            floorAll = re.findall('\d+',con)[1]
+                        elif '东' in con or '西' in con or '南' in con or '北' in con:
+                            Orientation = con
+                        elif '装修' in con or '不限' in con:
+                            decoration = con
+                        else:
+                            type = con
+                elif '小区' in text:
+                    EstateName = re.findall('：([\W|\w]+?)\[',text)[0]
+                    try:
+                        Distinct = re.findall('\[([\W|\w]+?)\/'.text)[0]
+                        Area = re.findall('\/([\W|\w]+?)\]',text)[0]
+                    except:
+                        continue
+
+            LandLadyName = sourcebsObj.findAll("span",{"class","name"})[0]
+            describe = sourcebsObj.findAll("div",{"class","agent-txt-per"})[0]
+
+            for ele in sourcebsObj.findAll("div",{"class","config-list"})[0].contents[0].contents:
+                appliance += ele.text + "|"
+
+            Address = ''
 
             #图片列表
             pics = ''
-            if len(sourcebsObj.findAll("div",{"class","pics"})) > 0:
-                for ele in sourcebsObj.findAll("div",{"class","pics"})[0].findAll("img"):
-                    pics += ele.attrs['src'] + "|"
+            if len(sourcebsObj.findAll("div",{"class","fy-img"})) > 0:
+                if len(sourcebsObj.findAll("div",{"class","fy-img"})[0].findAll("img")) > 0:
+                    for ele in sourcebsObj.findAll("div",{"class","fy-img"})[0].findAll("img"):
+                        pics += ele.attrs['src'] + "|"
 
             Sqlite = SqliteOpenClass()
-
-            describe = re.sub('[\r\n\t ]','',sourcebsObj.findAll('div',{"class","summary-cont"})[0].text)
 
             standardName = Sqlite.getestatename(EstateName,Address)
 
@@ -150,7 +156,7 @@ class SOUFANG(threading.Thread):
                 Sqlite.insertpiclinks(id,pics)
                 Sqlite.inserthouse(id,EstateName,floorAll,floor,'','unknown','unknown',type,rentType,decoration,
                                    sourceType,LandLadyName,LandLadyPhone,price,"面议",countt,counth,countr,square,
-                                   Orientation,appliance, SearchUrl)
+                                   Orientation,appliance, SearchUrl,describe)
                 return
         except Exception,ex:
             print(ex)

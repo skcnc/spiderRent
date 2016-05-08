@@ -85,7 +85,7 @@ class ANJUKE:
                 id = uuid.uuid1()
                 Sqlite.inserthouse(id,EstateName,floorAll,floor,'','unknown','unknown',type,"整租","普通装修",
                                    sourceType,LandLadyName,LandLadyPhone,price,"面议",countt,counth,countr,square,
-                                   Orientation,'', SearchUrl)
+                                   Orientation,'', SearchUrl,describe)
                 return
         except Exception,ex:
             print(ex)

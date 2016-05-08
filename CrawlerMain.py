@@ -12,24 +12,15 @@ import cookielib
 from Utils.Opener import *
 import time
 import chardet
-from StringIO import StringIO
-import gzip
+
 
 try:
     #模拟登陆至房探主页
     init()
-    url = 'http://zu.sh.fang.com/chuzu/1_53924434_-1.htm'
-    request = urllib2.Request(url)
-    request.add_header('Accept-encoding', 'gzip')
-    response = urllib2.urlopen(request)
-    if response.info().get('Content-Encoding') == 'gzip':
-        buf = StringIO( response.read())
-        f = gzip.GzipFile(fileobj=buf)
-        data = unicode(f.read(),'gbk').encode('utf8')
-        data = re.sub('\<script[\S|\s]+?script\>','',data)
-        bsObj = BeautifulSoup(data)
-    ul = bsObj.findAll("ul",{"class","house-info"})[0]
-    for ele in ul.contents:
-        print(ele.text)
+    Sqlite = SqliteOpenClass()
+    r =  Sqlite.getestatelinkwithname('幸福小镇')
+    print(r[0])
+    #SOUFANG_thread  = SOUFANG(1)
+    #SOUFANG_thread.crawler()
 except Exception,ex:
     print(ex)

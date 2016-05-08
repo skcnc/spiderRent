@@ -153,7 +153,7 @@ class WUBATONGCHENG(threading.Thread):
                 Sqlite.insertpiclinks(id,pics)
                 Sqlite.inserthouse(id,EstateName,floorAll,floor,'','unknown','unknown',type,"整租",decoration,
                                    sourceType,LandLadyName,LandLadyPhone,price,"面议",countt,counth,countr,square,
-                                   Orientation,appliance, SourceUrl)
+                                   Orientation,appliance, SourceUrl,describe)
                 return
         except Exception,ex:
             print(ex)
