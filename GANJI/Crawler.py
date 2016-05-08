@@ -14,9 +14,10 @@ class GANJI(threading.Thread):
         self.LastUrl = ''
         self.BaseUrl = 'http://sh.fangtan007.com'
         self.thread_stop = False
+        self.StartUrl = "http://sh.fangtan007.com/chuzu/fangwu/w02/"
 
-    def run(self,StartUrl):
-        self.crawler(StartUrl)
+    def run(self):
+        self.crawler(self.StartUrl)
 
     def stop(self):
         self.thread_stop = True
@@ -83,7 +84,7 @@ class GANJI(threading.Thread):
                 try:
                     prop = re.sub('[\t\r\n ]','',ele.text)
                 except:
-`                    continue;
+                   continue
                 if "户型" in prop:
                     try:
                         roomprops1 = prop.split('-')
@@ -105,7 +106,7 @@ class GANJI(threading.Thread):
                         else:
                             type = state
                 elif "小区" in prop:
-                    EstateName = re.findall(unicode('：([\W|\w]+)[-|\（]'),prop)[0]
+                    EstateName = re.findall(unicode('：([\W|\w]+)[-|\（|\(]'),prop)[0]
                 elif "楼层" in prop:
                     floor = re.findall('(\d+)',prop)[0]
                     floorAll = re.findall('(\d+)',prop)[1]
@@ -121,7 +122,7 @@ class GANJI(threading.Thread):
                 elif "配置" in prop:
                     appliance = prop.split('：')[1]
 
-            LandLadyName = re.findall(unicode('：([\W]+)\(','utf8'),re.sub('[\r\n\t ]','',sourcebsObj.findAll("span",{"class","contact-col"})[0].text))[0]
+            LandLadyName = re.findall(unicode('：([\W|\w]+)\(','utf8'),re.sub('[\r\n\t ]','',sourcebsObj.findAll("span",{"class","contact-col"})[0].text))[0]
 
             #图片列表
             pics = ''
@@ -154,6 +155,7 @@ class GANJI(threading.Thread):
         except Exception,ex:
             print(ex)
             print(SearchUrl)
+            print(SourceUrl)
             pass
 
 

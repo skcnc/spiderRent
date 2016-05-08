@@ -14,9 +14,10 @@ class WUBATONGCHENG(threading.Thread):
         self.LastUrl = ''
         self.BaseUrl = 'http://sh.fangtan007.com'
         self.thread_stop = False
+        self.StartUrl = "http://sh.fangtan007.com/chuzu/fangwu/w01/"
 
-    def run(self,StartUrl):
-        self.crawler(StartUrl)
+    def run(self):
+        self.crawler(self.StartUrl)
 
     def stop(self):
         self.thread_stop = True

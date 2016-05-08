@@ -11,7 +11,7 @@ sys.setdefaultencoding('utf-8')
 class SqliteOpenClass:
     def __init__(self):
         self.lock = threading.RLock()
-        self.dbpath = 'F:\项目文档\SpiderRent\spiderRent\HouseDB\HouseInfo'
+        self.dbpath = 'E:\python_project\spiderRent\HouseDB\HouseInfo'
 
     def get_conn(self):
         conn = sqlite3.connect( self.dbpath )
