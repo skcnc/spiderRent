@@ -57,6 +57,7 @@ class SOUFANG(threading.Thread):
         bsObj = getbsobj(SearchUrl)
         try:
             LandLadyPhone = bsObj.findAll(id='tel')[0].string
+            LandLadyName  = bsObj.findAll('div',{"class","info-right-div"})[0].contents[1].contents[1].contents[3].string
             Urls = re.findall('(http:\/\/[\w]+[\w\-\.,@?^=%&:/~\+#]*[\w\-\@?^=%&/~\+#])',bsObj.findAll("script")[12].text)
             SourceUrl = ''
             for url in Urls:
@@ -91,6 +92,10 @@ class SOUFANG(threading.Thread):
             countr = '0'
             countt = '0'
             describe = ''
+            District = ''
+            Area = ''
+
+            Sqlite = SqliteOpenClass()
 
             for ele in sourcebsObj.findAll("ul",{"class","house-info"})[0]:
                 try:
@@ -116,14 +121,14 @@ class SOUFANG(threading.Thread):
                         else:
                             type = con
                 elif '小区' in text:
-                    EstateName = re.findall('：([\W|\w]+?)\[',text)[0]
+                    EstateName = re.findall(unicode('：([\W|\w]+?)\[','utf8'),text)[0]
                     try:
-                        Distinct = re.findall('\[([\W|\w]+?)\/'.text)[0]
+                        District = re.findall('\[([\W|\w]+?)\/'.text)[0]
                         Area = re.findall('\/([\W|\w]+?)\]',text)[0]
                     except:
-                        continue
+                        Area = Sqlite.getestatelinkwithname(EstateName)
+                        District = Sqlite.getareadistrict(Area)
 
-            LandLadyName = sourcebsObj.findAll("span",{"class","name"})[0]
             describe = sourcebsObj.findAll("div",{"class","agent-txt-per"})[0]
 
             for ele in sourcebsObj.findAll("div",{"class","config-list"})[0].contents[0].contents:
@@ -137,8 +142,6 @@ class SOUFANG(threading.Thread):
                 if len(sourcebsObj.findAll("div",{"class","fy-img"})[0].findAll("img")) > 0:
                     for ele in sourcebsObj.findAll("div",{"class","fy-img"})[0].findAll("img"):
                         pics += ele.attrs['src'] + "|"
-
-            Sqlite = SqliteOpenClass()
 
             standardName = Sqlite.getestatename(EstateName,Address)
 
@@ -156,7 +159,7 @@ class SOUFANG(threading.Thread):
                 Sqlite.insertpiclinks(id,pics)
                 Sqlite.inserthouse(id,EstateName,floorAll,floor,'','unknown','unknown',type,rentType,decoration,
                                    sourceType,LandLadyName,LandLadyPhone,price,"面议",countt,counth,countr,square,
-                                   Orientation,appliance, SearchUrl,describe)
+                                   Orientation,appliance, SearchUrl,describe,District,Area)
                 return
         except Exception,ex:
             print(ex)

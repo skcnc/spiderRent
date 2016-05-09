@@ -12,15 +12,14 @@ import cookielib
 from Utils.Opener import *
 import time
 import chardet
+from FOCUSCN.Crawler import *
+from FIRSTFYCN.Crawler import *
 
 
 try:
     #模拟登陆至房探主页
     init()
-    Sqlite = SqliteOpenClass()
-    r =  Sqlite.getestatelinkwithname('幸福小镇')
-    print(r[0])
-    #SOUFANG_thread  = SOUFANG(1)
-    #SOUFANG_thread.crawler()
+    FIRSTFYCN_thread  = FIRSTFYCN(1)
+    FIRSTFYCN_thread.crawler()
 except Exception,ex:
     print(ex)

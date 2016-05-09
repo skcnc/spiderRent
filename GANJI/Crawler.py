@@ -80,6 +80,8 @@ class GANJI(threading.Thread):
             counth = '0'
             countr = '0'
             countt = '0'
+            district = ''
+            area = ''
             for ele in sourcebsObj.findAll("ul",{"class","basic-info-ul"})[0].contents:
                 try:
                     prop = re.sub('[\t\r\n ]','',ele.text)
@@ -112,11 +114,11 @@ class GANJI(threading.Thread):
                     floorAll = re.findall('(\d+)',prop)[1]
                 elif "位置" in prop:
                     position = re.findall(unicode('：([\W]+)','utf8'),re.sub(' ','',sourcebsObj.findAll("ul",{"class","basic-info-ul"})[0].contents[11].text))[0].split('-')
-                    Distinct = position[1]
+                    district = position[1]
                     if len(position) == 2:
-                        Area = position[1]
+                        area = position[1]
                     else:
-                        Area = position[2]
+                        area = position[2]
                 elif "地址" in prop:
                     Address = re.sub('[\t\n\r ]','',ele.contents[3].text)
                 elif "配置" in prop:
@@ -150,7 +152,7 @@ class GANJI(threading.Thread):
                 Sqlite.insertpiclinks(id,pics)
                 Sqlite.inserthouse(id,EstateName,floorAll,floor,'','unknown','unknown',type,rentType,decoration,
                                    sourceType,LandLadyName,LandLadyPhone,price,"面议",countt,counth,countr,square,
-                                   Orientation,appliance, SearchUrl,describe)
+                                   Orientation,appliance, SearchUrl,describe,district,area)
                 return
         except Exception,ex:
             print(ex)

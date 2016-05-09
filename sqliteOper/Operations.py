@@ -82,16 +82,25 @@ class SqliteOpenClass:
         self.conn_close(connection)
 
     def getestatelinkwithname(self,name):
-        sql = "SELECT AREANAME FROM ESTATELINK WHERE ESTATENAME LIKE '%{0}%'".format(name)
+        sql = "SELECT AREANAME FROM ESTATELINK WHERE ESTATENAME LIKE '%{0}%'".format(name.strip())
         connection = self.get_conn()
         value = connection.execute(sql)
         connection.commit()
         r = value.fetchall()
-        if value.arraysize > 0:
-            self.conn_close(connection)
-            return r[0]
-        else:
-            self.conn_close(connection)
+        try:
+            return r[0][0]
+        except:
+            return ''
+
+    def getareadistrict(self,area):
+        sql = "SELECT DISTINCTNAME FROM DICS WHERE DISTINCTID IN (SELECT DISTINCTID FROM AREA WHERE AREANAME LIKE '%{0}%')".format(area.strip())
+        connection = self.get_conn()
+        value = connection.execute(sql)
+        connection.commit()
+        r = value.fetchall()
+        try:
+            return r[0][0]
+        except:
             return ''
 
     def insertestatelink(self,area, name,link):
@@ -124,14 +133,14 @@ class SqliteOpenClass:
 
     def inserthouse(self,houseId,EstateName,FloorAll,Floor,FloorLevel,RoomNum,BuildingNo,Type,RentType,
                     Decoration,HouseSourceType,LandladyName,LandLadyPhone,RentPrice,PriceType,CountT,CountH,CountR,
-                    Square,Orientation,Appliance,link,descibe):
+                    Square,Orientation,Appliance,link,descibe,district,area):
         ISOTIMEFORMAT="%Y-%m-%d %X"
         curtime = time.strftime(ISOTIMEFORMAT, time.localtime())
 
-        sql_insert_house = "INSERT INTO House VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}')".format(
-            houseId,EstateName,curtime,str(FloorAll),str(Floor), '',RoomNum,BuildingNo,Type)
+        sql_insert_house = "INSERT INTO House VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}')".format(
+            houseId,EstateName,curtime,str(FloorAll),str(Floor), '',RoomNum,BuildingNo,Type,district,area)
 
-        sql_insert_houseinfo = "INSERT INTO HouseInfo VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}')".format(
+        sql_insert_houseinfo = "INSERT INTO HouseInfo VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}')".format(
             houseId,RentType,Decoration,HouseSourceType,LandladyName,LandLadyPhone,RentPrice,RentType,str(CountT),str(CountH),str(CountR),str(Square),
             Orientation,Appliance,curtime,link,descibe)
 

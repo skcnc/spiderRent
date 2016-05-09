@@ -76,6 +76,8 @@ class WUBATONGCHENG(threading.Thread):
             LandLadyName = ''
             Address = ''
             appliance = ''
+            district = ''
+            area = ''
             for ele in sourcebsObj.findAll("li",{"class","house-primary-content-li"}):
                 try:
                     prop = ele.contents[1].string
@@ -107,11 +109,11 @@ class WUBATONGCHENG(threading.Thread):
                         pass
                 elif "小区" in prop:
                     position = re.sub('[\t\n\r ]','',ele.contents[3].text).split('-')
-                    Distinct = position[0]
+                    district = position[0]
                     if len(position) == 3:
-                        Area = position[1]
+                        area = position[1]
                     else:
-                        Area = ''
+                        area = ''
 
                     EstateName = position[len(position)-1]
                     if '(' in EstateName:
@@ -153,7 +155,7 @@ class WUBATONGCHENG(threading.Thread):
                 Sqlite.insertpiclinks(id,pics)
                 Sqlite.inserthouse(id,EstateName,floorAll,floor,'','unknown','unknown',type,"整租",decoration,
                                    sourceType,LandLadyName,LandLadyPhone,price,"面议",countt,counth,countr,square,
-                                   Orientation,appliance, SourceUrl,describe)
+                                   Orientation,appliance, SourceUrl,describe,district,area)
                 return
         except Exception,ex:
             print(ex)
