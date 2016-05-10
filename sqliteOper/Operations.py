@@ -167,6 +167,20 @@ class SqliteOpenClass:
         conn.commit()
         conn.close()
 
+    def movehousedata(self):
+        sqlA = "INSERT INTO HOUSEHIS SELECT * FROM HOUSE"
+        sqlB = "INSERT INTO HOUSEINFOHIS SELECT * FROM HOUSEINFO"
+        sqlC = "DELETE FROM HOUSE"
+        sqlD = "DELETE FROM HOUSEINFO"
+
+        conn = sqlite3.connect(self.dbpath)
+        conn.execute(sqlA)
+        conn.execute(sqlB)
+        conn.execute(sqlC)
+        conn.execute(sqlD)
+        conn.commit()
+        conn.close()
+
 
 
 

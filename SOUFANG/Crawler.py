@@ -12,6 +12,7 @@ import gzip
 class SOUFANG(threading.Thread):
     "赶集网"
     def __init__(self, threadno):
+        super(SOUFANG,self).__init__()
         self.THREADNO = threadno
         self.LastUrl = ''
         self.BaseUrl = 'http://sh.fangtan007.com'
@@ -19,7 +20,7 @@ class SOUFANG(threading.Thread):
         self.StartUrl = "http://sh.fangtan007.com/chuzu/fangwu/w05/"
 
     def run(self):
-        self.crawler(self.StartUrl)
+        self.crawler()
 
     def stop(self):
         self.thread_stop = True
@@ -57,6 +58,9 @@ class SOUFANG(threading.Thread):
         bsObj = getbsobj(SearchUrl)
         try:
             LandLadyPhone = bsObj.findAll(id='tel')[0].string
+            dupmark = checkDup(LandLadyPhone)
+            if dupmark == True:
+                return
             #LandLadyName  = bsObj.findAll('div',{"class","info-right-div"})[0].contents[1].contents[1].contents[3].string
             Urls = re.findall('(http:\/\/[\w]+[\w\-\.,@?^=%&:/~\+#]*[\w\-\@?^=%&/~\+#])',bsObj.findAll("script")[12].text)
             SourceUrl = ''
@@ -167,7 +171,7 @@ class SOUFANG(threading.Thread):
                 Sqlite.insertpiclinks(id,pics)
                 Sqlite.inserthouse(id,EstateName,floorAll,floor,'','unknown','unknown',type,rentType,decoration,
                                    sourceType,LandLadyName,LandLadyPhone,price,"面议",countt,counth,countr,square,
-                                   Orientation,appliance, SearchUrl,describe,District,Area)
+                                   Orientation,appliance,SourceUrl,describe,District,Area)
                 return
         except Exception,ex:
             print(ex)

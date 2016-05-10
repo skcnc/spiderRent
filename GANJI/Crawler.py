@@ -10,6 +10,7 @@ from Utils.Opener import *
 class GANJI(threading.Thread):
     "赶集网"
     def __init__(self, threadno):
+        super(GANJI,self).__init__()
         self.THREADNO = threadno
         self.LastUrl = ''
         self.BaseUrl = 'http://sh.fangtan007.com'
@@ -55,6 +56,11 @@ class GANJI(threading.Thread):
         bsObj = getbsobj(SearchUrl)
         try:
             LandLadyPhone = bsObj.findAll(id='tel')[0].string
+
+            dupmark = checkDup(LandLadyPhone)
+            if dupmark == True:
+                return
+
             Urls = re.findall('(http:\/\/[\w]+[\w\-\.,@?^=%&:/~\+#]*[\w\-\@?^=%&/~\+#])',bsObj.findAll("script")[12].text)
             SourceUrl = ''
             for url in Urls:
@@ -82,6 +88,7 @@ class GANJI(threading.Thread):
             countt = '0'
             district = ''
             area = ''
+            EstateName = ''
             for ele in sourcebsObj.findAll("ul",{"class","basic-info-ul"})[0].contents:
                 try:
                     prop = re.sub('[\t\r\n ]','',ele.text)
@@ -109,6 +116,8 @@ class GANJI(threading.Thread):
                             type = state
                 elif "小区" in prop:
                     EstateName = re.findall(unicode('：([\W|\w]+)[-|\（|\(]'),prop)[0]
+                    if '-' in EstateName:
+                        EstateName = EstateName.split('-')[0]
                 elif "楼层" in prop:
                     floor = re.findall('(\d+)',prop)[0]
                     floorAll = re.findall('(\d+)',prop)[1]
@@ -152,7 +161,7 @@ class GANJI(threading.Thread):
                 Sqlite.insertpiclinks(id,pics)
                 Sqlite.inserthouse(id,EstateName,floorAll,floor,'','unknown','unknown',type,rentType,decoration,
                                    sourceType,LandLadyName,LandLadyPhone,price,"面议",countt,counth,countr,square,
-                                   Orientation,appliance, SearchUrl,describe,district,area)
+                                   Orientation,appliance, SourceUrl,describe,district,area)
                 return
         except Exception,ex:
             print(ex)

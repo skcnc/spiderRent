@@ -8,11 +8,11 @@ import threading
 
 class ANJUKE(threading.Thread):
     def __init__(self, threadno):
+        super(ANJUKE,self).__init__()
         self.THREADNO = threadno
         self.LastUrl = ''
-        self.BaseUrl = 'http://sh.fangtan007.com'
         self.thread_stop = False
-        self.StartUrl = "http://sh.fangtan007.com/chuzu/fangwu/w02/"
+        self.StartUrl = "http://sh.zu.anjuke.com/fangyuan/l2-px3/?kw=%E4%B8%AA%E4%BA%BA%E6%88%BF%E6%BA%90&cw=%E4%B8%AA%E4%BA%BA%E6%88%BF%E6%BA%90"
 
     def run(self):
         self.crawler(self.StartUrl)
@@ -69,6 +69,11 @@ class ANJUKE(threading.Thread):
             LandLadyName = bsObj.findAll(id='broker_true_name')[0].string
             LandLadyPhone = bsObj.findAll("div",{"class","broker_tel"})[0].contents[1]
             appliance = ''
+
+            dupmark = checkDup(LandLadyPhone)
+            if dupmark == True:
+                return
+
             try:
                 content = bsObj.findAll("div",{"class","pro_links"})[0].contents[1]
                 for ele in content:

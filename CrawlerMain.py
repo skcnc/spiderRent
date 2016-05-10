@@ -15,34 +15,39 @@ from FOCUSCN.Crawler import *
 from FIRSTFYCN.Crawler import *
 
 
-try:
+
+quit = False
+while quit == False:
+    try:
     #模拟登陆至房探主页
-    init()
-    SOUFANG_thread  = SOUFANG(1)
-    SOUFANG_thread.start()
-    time.sleep(5)
-    ANJUKE_thread = ANJUKE(2)
-    ANJUKE_thread.start()
-    time.sleep(5)
-    FIRSTFYCN_thread = FIRSTFYCN(3)
-    FIRSTFYCN_thread.start()
-    time.sleep(5)
-    FOCUSCN_thread = FOCUSCN(4)
-    FOCUSCN_thread.start()
-    time.sleep(5)
-    GANJI_thread = GANJI(5)
-    GANJI_thread.start()
-    time.sleep(5)
-    GRFY_thread = GRFY(6)
-    GRFY_thread.start()
-    time.sleep(5)
-    WUBATONGCHENG_thread = WUBATONGCHENG(7)
-    WUBATONGCHENG_thread.start()
-    time.sleep(5)
-    quit = False
-    while quit == False:
-        time.sleep(1000)
-except Exception,ex:
+        init()
+        GRFY_thread = GRFY(6)
+        GRFY_thread.start()
+        time.sleep(5)
+        SOUFANG_thread  = SOUFANG(1)
+        SOUFANG_thread.start()
+        time.sleep(5)
+        ANJUKE_thread = ANJUKE(2)
+        ANJUKE_thread.start()
+        time.sleep(5)
+        FIRSTFYCN_thread = FIRSTFYCN(3)
+        FIRSTFYCN_thread.start()
+        time.sleep(5)
+        FOCUSCN_thread = FOCUSCN(4)
+        FOCUSCN_thread.start()
+        time.sleep(5)
+        GANJI_thread = GANJI(5)
+        GANJI_thread.start()
+        time.sleep(5)
+        WUBATONGCHENG_thread = WUBATONGCHENG(7)
+        WUBATONGCHENG_thread.start()
+        time.sleep(5)
+    except Exception,ex:
+        print("执行结束！")
+        pass
+    time.sleep(600)
+    Sql =SqliteOpenClass()
+    Sql.movehousedata()
     SOUFANG_thread.stop()
     ANJUKE_thread.stop()
     FIRSTFYCN_thread.stop()
@@ -50,4 +55,4 @@ except Exception,ex:
     GANJI_thread.stop()
     GRFY_thread.stop()
     WUBATONGCHENG_thread.stop()
-    print(ex)
+    time.sleep(10)

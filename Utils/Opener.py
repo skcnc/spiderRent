@@ -22,7 +22,11 @@ def init():
 def getbsobj(url):
     global mutex
     mutex.acquire()
-    html = opener.open(url)
-    bsObj = BeautifulSoup(html.read())
-    mutex.release()
-    return bsObj
+    try:
+        html = opener.open(url)
+        bsObj = BeautifulSoup(html.read())
+        mutex.release()
+        return bsObj
+    except Exception,ex:
+        mutex.release()
+        return ''

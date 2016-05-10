@@ -1,52 +1,53 @@
-# -*- coding: utf-8 -*-
-from anjuke.HtmlOper import *
-from anjuke.AnjukeInsertDB import *
-from urllib import urlopen
+#!/usr/bin/env python
+# -*- coding:utf8 -*-
+from GRFY.Crawler import *
+from ANJUKESOURCE.Crawler import *
+from WUBATONGCHENG.Crawler import *
+from GANJI.Crawler import *
+from SOUFANG.Crawler import *
 from bs4 import BeautifulSoup
-import threading
+import urllib
+import urllib2
+import cookielib
+from Utils.Opener import *
 import time
+from FOCUSCN.Crawler import *
+from FIRSTFYCN.Crawler import *
 
-#anjuke = anjukeOper()
-#anjuke.GetAreaInfo("http://shanghai.anjuke.com/community/")
-#GetAreaInfo("http://shanghai.anjuke.com/community/")
 
-ts = []
-var = 0
-
-while var < 10:
-    ts.append(XQinfo(var))
-    ts[var].url = ''
-    ts[var].tno = var
-    ts[var].start()
-    var += 1
-
-db = SqliteOpenClass()
-arr = db.getestatelink()
-
-time.sleep(1)
-
-if arr is None:
-    print(" arr is none !")
-
-while len(arr) != 0:
-    for row in arr:
-        try:
-            name = row[0]
-            link = row[1]
-            mark = row[2]
-            if mark == "Y":
-                continue
-            for work in ts:
-                time.sleep(0.1)
-                if work.completed == True:
-                    work.url = link
-                    print(work.tno + "  " + name + "  " + link)
-                    time.sleep(0.5)
-                    break
-        except:
-            print(row[0] + "|" + row[1] + "|" + row[2])
-    arr = db.getestatelink()
-
-for work in ts:
-    work.stop()
-print("搜索结束")
+try:
+    #模拟登陆至房探主页
+    init()
+    GRFY_thread = GRFY(6)
+    GRFY_thread.crawler_level2("d-11988407.html")
+    # time.sleep(5)
+    # SOUFANG_thread  = SOUFANG(1)
+    # SOUFANG_thread.start()
+    # time.sleep(5)
+    # ANJUKE_thread = ANJUKE(2)
+    # ANJUKE_thread.start()
+    # time.sleep(5)
+    # FIRSTFYCN_thread = FIRSTFYCN(3)
+    # FIRSTFYCN_thread.start()
+    # time.sleep(5)
+    # FOCUSCN_thread = FOCUSCN(4)
+    # FOCUSCN_thread.start()
+    # time.sleep(5)
+    # GANJI_thread = GANJI(5)
+    # GANJI_thread.start()
+    # time.sleep(5)
+    # WUBATONGCHENG_thread = WUBATONGCHENG(7)
+    # WUBATONGCHENG_thread.start()
+    # time.sleep(5)
+    quit = False
+    while quit == False:
+        time.sleep(1000)
+except Exception,ex:
+    # SOUFANG_thread.stop()
+    # ANJUKE_thread.stop()
+    # FIRSTFYCN_thread.stop()
+    # FOCUSCN_thread.stop()
+    # GANJI_thread.stop()
+    # GRFY_thread.stop()
+    # WUBATONGCHENG_thread.stop()
+    print(ex)

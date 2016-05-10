@@ -10,6 +10,7 @@ from Utils.Opener import *
 class WUBATONGCHENG(threading.Thread):
     "58同城"
     def __init__(self, threadno):
+        super(WUBATONGCHENG,self).__init__()
         self.THREADNO = threadno
         self.LastUrl = ''
         self.BaseUrl = 'http://sh.fangtan007.com'
@@ -55,6 +56,11 @@ class WUBATONGCHENG(threading.Thread):
         bsObj = getbsobj(SearchUrl)
         try:
             LandLadyPhone = bsObj.findAll(id='tel')[0].string
+
+            dupmark = checkDup(LandLadyPhone)
+            if dupmark == True:
+                return
+
             Urls = re.findall('(http:\/\/[\w]+[\w\-\.,@?^=%&:/~\+#]*[\w\-\@?^=%&/~\+#])',bsObj.findAll("script")[12].text)
             SourceUrl = ''
             for url in Urls:

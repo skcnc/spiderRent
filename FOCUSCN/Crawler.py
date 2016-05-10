@@ -10,6 +10,7 @@ from Utils.Opener import *
 class FOCUSCN(threading.Thread):
     "搜狐焦点"
     def __init__(self, threadno):
+        super(FOCUSCN,self).__init__()
         self.THREADNO = threadno
         self.LastUrl = ''
         self.BaseUrl = 'http://sh.fangtan007.com'
@@ -17,7 +18,7 @@ class FOCUSCN(threading.Thread):
         self.StartUrl = "http://sh.fangtan007.com/chuzu/fangwu/w13/"
 
     def run(self):
-        self.crawler(self.StartUrl)
+        self.crawler()
 
     def stop(self):
         self.thread_stop = True
@@ -48,13 +49,18 @@ class FOCUSCN(threading.Thread):
                         urlbuff = href
                     #说明是新的信息，需要载入进来
                     self.crawler_level2(self.BaseUrl + href)
-                except:
+                except Exception,ex:
                     continue
 
     def crawler_level2(self,SearchUrl):
         bsObj = getbsobj(SearchUrl)
         try:
             LandLadyPhone = bsObj.findAll(id='tel')[0].string
+
+            dupmark = checkDup(LandLadyPhone)
+            if dupmark == True:
+                return
+
             LandLadyName = bsObj.findAll("div",{"class","info-right-div"})[0].contents[1].contents[1].contents[3].string
             Urls = re.findall('(http:\/\/[\w]+[\w\-\.,@?^=%&:/~\+#]*[\w\-\@?^=%&/~\+#])',bsObj.findAll("script")[12].text)
             SourceUrl = ''

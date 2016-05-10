@@ -2,14 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7082206a-dac2-4f2c-8e44-33b016a484da" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/anjuke/AnjukeInsertDB.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/anjuke/HtmlOper.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/anjuke/__init__.py" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HouseDB/HouseInfo" afterPath="$PROJECT_DIR$/HouseDB/HouseInfo" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ANJUKESOURCE/Crawler.py" afterPath="$PROJECT_DIR$/ANJUKESOURCE/Crawler.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CrawlerMain.py" afterPath="$PROJECT_DIR$/CrawlerMain.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FIRSTFYCN/Crawler.py" afterPath="$PROJECT_DIR$/FIRSTFYCN/Crawler.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FOCUSCN/Crawler.py" afterPath="$PROJECT_DIR$/FOCUSCN/Crawler.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GANJI/Crawler.py" afterPath="$PROJECT_DIR$/GANJI/Crawler.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GRFY/Crawler.py" afterPath="$PROJECT_DIR$/GRFY/Crawler.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SOUFANG/Crawler.py" afterPath="$PROJECT_DIR$/SOUFANG/Crawler.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Utils/Opener.py" afterPath="$PROJECT_DIR$/Utils/Opener.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Utils/UtilToolFunc.py" afterPath="$PROJECT_DIR$/Utils/UtilToolFunc.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WUBATONGCHENG/Crawler.py" afterPath="$PROJECT_DIR$/WUBATONGCHENG/Crawler.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sqliteOper/Operations.py" afterPath="$PROJECT_DIR$/sqliteOper/Operations.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.py" afterPath="$PROJECT_DIR$/test.py" />
     </list>
     <ignored path="SpiderCrawler.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -41,7 +47,7 @@
         <entry file="file://$PROJECT_DIR$/CrawlerMain.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
+              <caret line="44" column="24" selection-start-line="44" selection-start-column="24" selection-end-line="44" selection-end-column="24" />
               <folding>
                 <element signature="e#44#70#0" expanded="true" />
               </folding>
@@ -49,11 +55,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Operations.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sqliteOper/Operations.py">
+      <file leaf-file-name="Crawler.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WUBATONGCHENG/Crawler.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="17" column="19" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
+              <caret line="59" column="12" selection-start-line="59" selection-start-column="12" selection-end-line="61" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UtilToolFunc.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Utils/UtilToolFunc.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="38" column="20" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -63,11 +79,10 @@
         <entry file="file://$PROJECT_DIR$/GANJI/Crawler.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="24" column="31" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
+              <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
               <folding>
                 <element signature="e#24#50#0" expanded="true" />
-                <element signature="e#288#490#0" expanded="false" />
-                <element signature="e#576#599#0" expanded="false" />
+                <element signature="e#613#636#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -77,40 +92,43 @@
         <entry file="file://$PROJECT_DIR$/GRFY/Crawler.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
+              <caret line="85" column="0" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
               <folding>
                 <element signature="e#24#50#0" expanded="true" />
-                <element signature="e#532#555#0" expanded="false" />
-                <element signature="e#597#1723#0" expanded="false" />
-                <element signature="e#1773#3961#0" expanded="false" />
+                <element signature="e#568#591#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Crawler.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/SOUFANG/Crawler.py">
+      <file leaf-file-name="Operations.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sqliteOper/Operations.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="e#332#534#0" expanded="false" />
-              </folding>
+              <caret line="181" column="0" selection-start-line="181" selection-start-column="0" selection-end-line="181" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="Crawler.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ANJUKESOURCE/Crawler.py">
+        <entry file="file://$PROJECT_DIR$/SOUFANG/Crawler.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="8" column="12" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="12" />
+              <caret line="62" column="22" selection-start-line="62" selection-start-column="22" selection-end-line="62" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Crawler.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ANJUKESOURCE/Crawler.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.785461">
+              <caret line="63" column="51" selection-start-line="63" selection-start-column="51" selection-end-line="63" selection-end-column="51" />
               <folding>
                 <element signature="e#24#50#0" expanded="true" />
-                <element signature="e#252#454#0" expanded="false" />
-                <element signature="e#540#563#0" expanded="false" />
-                <element signature="e#605#1660#0" expanded="false" />
-                <element signature="e#1710#4181#0" expanded="false" />
+                <element signature="e#606#629#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -120,7 +138,7 @@
         <entry file="file://$PROJECT_DIR$/FIRSTFYCN/Crawler.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -130,7 +148,7 @@
         <entry file="file://$PROJECT_DIR$/FOCUSCN/Crawler.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -158,16 +176,19 @@
         <option value="$PROJECT_DIR$/wenti.html" />
         <option value="$PROJECT_DIR$/zhengque.html" />
         <option value="$PROJECT_DIR$/GRFY/__init__.py" />
-        <option value="$PROJECT_DIR$/Utils/UtilToolFunc.py" />
         <option value="$PROJECT_DIR$/FANGTAN/Crawler.py" />
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/Utils/Opener.py" />
-        <option value="$PROJECT_DIR$/WUBATONGCHENG/Crawler.py" />
-        <option value="$PROJECT_DIR$/GANJI/Crawler.py" />
         <option value="$PROJECT_DIR$/sqliteOper/Operations.py" />
-        <option value="$PROJECT_DIR$/ANJUKESOURCE/Crawler.py" />
-        <option value="$PROJECT_DIR$/GRFY/Crawler.py" />
         <option value="$PROJECT_DIR$/CrawlerMain.py" />
+        <option value="$PROJECT_DIR$/Utils/UtilToolFunc.py" />
+        <option value="$PROJECT_DIR$/WUBATONGCHENG/Crawler.py" />
+        <option value="$PROJECT_DIR$/SOUFANG/Crawler.py" />
+        <option value="$PROJECT_DIR$/GRFY/Crawler.py" />
+        <option value="$PROJECT_DIR$/GANJI/Crawler.py" />
+        <option value="$PROJECT_DIR$/FOCUSCN/Crawler.py" />
+        <option value="$PROJECT_DIR$/FIRSTFYCN/Crawler.py" />
+        <option value="$PROJECT_DIR$/ANJUKESOURCE/Crawler.py" />
       </list>
     </option>
   </component>
@@ -223,6 +244,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -283,7 +305,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="SOUFANG" />
+              <option name="myItemId" value="Utils" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -297,7 +319,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="HouseDB" />
+              <option name="myItemId" value="SOUFANG" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -374,7 +396,6 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -386,11 +407,11 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\scutech\PycharmProjects\SpiderCrawler\sqliteOper" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\python_project\SpiderCrawler\sqliteOper" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\scutech\PycharmProjects\SpiderCrawler\sqliteOper" />
     </key>
   </component>
   <component name="RunManager" selected="Python.CrawlerMain">
@@ -603,8 +624,8 @@
     <recent_temporary>
       <list size="4">
         <item index="0" class="java.lang.String" itemvalue="Python.CrawlerMain" />
-        <item index="1" class="java.lang.String" itemvalue="Python.Operations" />
-        <item index="2" class="java.lang.String" itemvalue="Python.test" />
+        <item index="1" class="java.lang.String" itemvalue="Python.test" />
+        <item index="2" class="java.lang.String" itemvalue="Python.Operations" />
         <item index="3" class="java.lang.String" itemvalue="Python.HtmlOper" />
       </list>
     </recent_temporary>
@@ -623,7 +644,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13645834" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -635,7 +656,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32769555" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.43340382" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3731501" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -659,53 +680,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint type="python-line">
-          <url>file://$PROJECT_DIR$/FANGTAN/Crawler.py</url>
-          <line>54</line>
-          <option name="timeStamp" value="259" />
-        </line-breakpoint>
-        <line-breakpoint type="python-line">
-          <url>file://$PROJECT_DIR$/WUBATONGCHENG/Crawler.py</url>
-          <line>19</line>
-          <option name="timeStamp" value="290" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/ANJUKESOURCE/Crawler.py</url>
-          <line>17</line>
-          <option name="timeStamp" value="333" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/FIRSTFYCN/Crawler.py</url>
-          <line>19</line>
-          <option name="timeStamp" value="334" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/FOCUSCN/Crawler.py</url>
-          <line>19</line>
-          <option name="timeStamp" value="335" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/GANJI/Crawler.py</url>
-          <line>19</line>
-          <option name="timeStamp" value="336" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/SOUFANG/Crawler.py</url>
-          <line>21</line>
-          <option name="timeStamp" value="337" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/GRFY/Crawler.py</url>
-          <line>18</line>
-          <option name="timeStamp" value="338" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/CrawlerMain.py</url>
-          <line>20</line>
-          <option name="timeStamp" value="339" />
-        </line-breakpoint>
-      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
@@ -716,25 +690,90 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="340" />
+      <option name="time" value="431" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
-        <watch expression="sourcebsObj.findAll(&quot;ul&quot;,{&quot;class&quot;,&quot;basic-info-ul&quot;})[0].contents" language="Python" />
-        <watch expression="re.findall(unicode('：([\W]+)\(','utf8'),re.sub('[\r\n\t ]','',sourcebsObj.findAll(&quot;span&quot;,{&quot;class&quot;,&quot;contact-col&quot;})[0].text))" language="Python" />
-        <watch expression=" ele.attrs['src']" language="Python" />
-        <watch expression="pics" language="Python" />
-        <watch expression="re.sub('[\r\n\t ]','',sourcebsObj.findAll('div',{&quot;class&quot;,&quot;summary-cont&quot;})[0].text)" language="Python" />
-        <watch expression="sourcebsObj.findAll(&quot;div&quot;,{&quot;class&quot;,&quot;pics&quot;})" language="Python" />
-        <watch expression="sourcebsObj.findAll('div',{&quot;class&quot;,&quot;summary-cont&quot;})[0].text" language="Python" />
-        <watch expression="rooms" language="Python" />
-        <watch expression="SourceUrl" language="Python" />
-        <watch expression="re.findall(unicode('：([\W|\w]+)[-|\（]'),prop)" language="Python" />
-        <watch expression="prop" language="Python" />
+        <watch expression="re.findall(unicode('：([\W|\w]+)[-|\（|\(]'),prop)[0]" language="Python" />
       </configuration>
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/GANJI/Crawler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="85" column="26" selection-start-line="85" selection-start-column="26" selection-end-line="85" selection-end-column="26" />
+          <folding>
+            <element signature="e#24#50#0" expanded="true" />
+            <element signature="e#613#636#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GRFY/Crawler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="67" column="100" selection-start-line="67" selection-start-column="100" selection-end-line="67" selection-end-column="100" />
+          <folding>
+            <element signature="e#24#50#0" expanded="true" />
+            <element signature="e#568#591#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sqliteOper/Operations.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="181" column="0" selection-start-line="181" selection-start-column="0" selection-end-line="181" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SOUFANG/Crawler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="35" column="25" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Utils/Opener.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
+          <folding>
+            <element signature="e#24#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ANJUKESOURCE/Crawler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="31" column="25" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="25" />
+          <folding>
+            <element signature="e#24#50#0" expanded="true" />
+            <element signature="e#606#629#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FIRSTFYCN/Crawler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FOCUSCN/Crawler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="73" column="27" selection-start-line="73" selection-start-column="27" selection-end-line="73" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/CrawlerMain.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -903,14 +942,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="2406" column="0" selection-start-line="2406" selection-start-column="0" selection-end-line="2406" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ANJUKESOURCE/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -928,31 +959,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="16" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Utils/UtilToolFunc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="23" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://E:/Python27/Lib/urllib2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="430" column="0" selection-start-line="430" selection-start-column="0" selection-end-line="430" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Utils/Opener.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="11" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="46" />
         </state>
       </provider>
     </entry>
@@ -963,73 +973,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WUBATONGCHENG/Crawler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="103" column="32" selection-start-line="103" selection-start-column="32" selection-end-line="103" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sqliteOper/Operations.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="19" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GRFY/Crawler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
-          <folding>
-            <element signature="e#24#50#0" expanded="true" />
-            <element signature="e#532#555#0" expanded="false" />
-            <element signature="e#597#1723#0" expanded="false" />
-            <element signature="e#1773#3961#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GANJI/Crawler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="24" column="31" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
-          <folding>
-            <element signature="e#24#50#0" expanded="true" />
-            <element signature="e#288#490#0" expanded="false" />
-            <element signature="e#576#599#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FOCUSCN/Crawler.py">
+    <entry file="file://$PROJECT_DIR$/SOUFANG/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FIRSTFYCN/Crawler.py">
+    <entry file="file://$PROJECT_DIR$/ANJUKESOURCE/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://E:/Python27/Lib/threading.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="800" column="0" selection-start-line="800" selection-start-column="0" selection-end-line="800" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ANJUKESOURCE/Crawler.py">
+    <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="12" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="12" />
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Utils/Opener.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
           <folding>
-            <element signature="e#24#50#0" expanded="true" />
-            <element signature="e#252#454#0" expanded="false" />
-            <element signature="e#540#563#0" expanded="false" />
-            <element signature="e#605#1660#0" expanded="false" />
-            <element signature="e#1710#4181#0" expanded="false" />
+            <element signature="e#24#37#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1037,19 +1015,90 @@
     <entry file="file://$PROJECT_DIR$/CrawlerMain.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
+          <caret line="44" column="24" selection-start-line="44" selection-start-column="24" selection-end-line="44" selection-end-column="24" />
           <folding>
             <element signature="e#44#70#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/sqliteOper/Operations.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="181" column="0" selection-start-line="181" selection-start-column="0" selection-end-line="181" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Utils/UtilToolFunc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="38" column="20" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WUBATONGCHENG/Crawler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="59" column="12" selection-start-line="59" selection-start-column="12" selection-end-line="61" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/SOUFANG/Crawler.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="62" column="22" selection-start-line="62" selection-start-column="22" selection-end-line="62" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GRFY/Crawler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="85" column="0" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
           <folding>
-            <element signature="e#332#534#0" expanded="false" />
+            <element signature="e#24#50#0" expanded="true" />
+            <element signature="e#568#591#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GANJI/Crawler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+          <folding>
+            <element signature="e#24#50#0" expanded="true" />
+            <element signature="e#613#636#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FOCUSCN/Crawler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FIRSTFYCN/Crawler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ANJUKESOURCE/Crawler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.785461">
+          <caret line="63" column="51" selection-start-line="63" selection-start-column="51" selection-end-line="63" selection-end-column="51" />
+          <folding>
+            <element signature="e#24#50#0" expanded="true" />
+            <element signature="e#606#629#0" expanded="false" />
           </folding>
         </state>
       </provider>

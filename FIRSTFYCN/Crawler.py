@@ -10,6 +10,7 @@ from Utils.Opener import *
 class FIRSTFYCN(threading.Thread):
     "搜狐焦点"
     def __init__(self, threadno):
+        super(FIRSTFYCN,self).__init__()
         self.THREADNO = threadno
         self.LastUrl = ''
         self.BaseUrl = 'http://sh.fangtan007.com'
@@ -17,7 +18,7 @@ class FIRSTFYCN(threading.Thread):
         self.StartUrl = "http://sh.fangtan007.com/chuzu/fangwu/w24/"
 
     def run(self):
-        self.crawler(self.StartUrl)
+        self.crawler()
 
     def stop(self):
         self.thread_stop = True
@@ -55,6 +56,11 @@ class FIRSTFYCN(threading.Thread):
         bsObj = getbsobj(SearchUrl)
         try:
             LandLadyPhone = bsObj.findAll(id='tel')[0].string
+
+            dupmark = checkDup(LandLadyPhone)
+            if dupmark == True:
+                return
+
             Urls = re.findall('(http:\/\/[\w]+[\w\-\.,@?^=%&:/~\+#]*[\w\-\@?^=%&/~\+#])',bsObj.findAll("script")[12].text)
             SourceUrl = ''
             for url in Urls:

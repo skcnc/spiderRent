@@ -7,6 +7,8 @@ landlady = ['无中介','非中介','个人房源','免中介','我是房东','�
                 '发自手机','非诚勿扰','非中介出租','换工作','工作地点变更']
 agency = ['本人中介']
 
+Ladyphones = []
+
 def checkSourceType(describe):
     "根据输入字符判断消息来源是房东/中介/租客"
     for word in landlady:
@@ -25,3 +27,14 @@ def checkSourceType(describe):
         sqlite.insertUnknowndesc(describe)
     finally:
         return "疑似中介房源"
+
+
+def checkDup(phone):
+    phone = re.sub(' ','',phone)
+
+    if phone in Ladyphones:
+        return True
+    else:
+        Ladyphones.append(phone)
+        return False
+
