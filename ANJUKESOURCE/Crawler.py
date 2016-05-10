@@ -67,9 +67,8 @@ class ANJUKE(threading.Thread):
             floor =bsObj.findAll("dl",{"class","p_phrase"})[9].contents[3].string.split('/')[0]
             floorAll = bsObj.findAll("dl",{"class","p_phrase"})[9].contents[3].string.split('/')[1]
             LandLadyName = bsObj.findAll(id='broker_true_name')[0].string
-            LandLadyPhone = bsObj.findAll("div",{"class","broker_tel"})[0].contents[1]
+            LandLadyPhone = re.sub(' ','',bsObj.findAll("div",{"class","broker_tel"})[0].contents[1])
             appliance = ''
-
             dupmark = checkDup(LandLadyPhone)
             if dupmark == True:
                 return
