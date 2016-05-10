@@ -19,7 +19,8 @@ from FIRSTFYCN.Crawler import *
 try:
     #模拟登陆至房探主页
     init()
-    FIRSTFYCN_thread  = FIRSTFYCN(1)
-    FIRSTFYCN_thread.crawler()
+    SOUFANG_thread  = SOUFANG(1)
+    SOUFANG_thread.crawler()
+    #SOUFANG_thread.crawler_level2("http://sh.fangtan007.com/fangwu/7306732.html")
 except Exception,ex:
     print(ex)

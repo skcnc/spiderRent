@@ -30,7 +30,7 @@ class FIRSTFYCN(threading.Thread):
                 self.LastUrl = urlbuff
             urlbuff = ''
             import time
-            time.sleep(3)  #每隔30s 启动一次查询
+            time.sleep(30)  #每隔30s 启动一次查询
             bsObj = getbsobj(self.StartUrl)
             UrlList = bsObj.findAll("div",{'class','sub-left-list'})[0].contents[1]
             count = 0
@@ -41,7 +41,7 @@ class FIRSTFYCN(threading.Thread):
                     if self.LastUrl == href:
                         break
 
-                    if count >= 20:
+                    if count >= 3:
                         break
 
                     if urlbuff == '':
@@ -85,19 +85,23 @@ class FIRSTFYCN(threading.Thread):
                     except:
                         continue
                     if '租金价格' in T:
-                        price = re.findall('\d+',re.sub('[\r\n\t ]','',T))[0]
+                        if '面议' in T:
+                            price = '面议'
+                        else:
+                            price = re.findall('\d+',re.sub('[\r\n\t ]','',T))[0]
                     elif '户型面积' in T:
                         estate = re.findall(unicode('：([\S|\s]+)','utf8'),T)[0]
                         rooms = re.sub(' ','',estate.split('-')[0])
                         square = re.sub(' ','',estate.split('-')[1])
                     elif '小区名称' in T:
-                        EstateName = re.findall(unicode('：([\S|\s]+)[\（]','utf8'),T)[0]
+                            EstateName = re.findall(unicode('：([\S|\s]+)\（?','utf8'),T)[0]
                     elif '小区地址' in T:
                         position = re.findall(unicode('：([\S|\s]+)','utf8'),T)[0]
                         district = re.sub(' ','',position.split('-')[1])
                         if len(position.split('-')) == 4:
                             area = re.sub(' ','',position.split('-')[2])
-                        Address = re.findall(unicode('[\（|\(]([\S|\s]+)[\）\)]','utf8'),position.split('-')[len(position.split('-'))-1])[0]
+                        if len(position.split('-')[len(position.split('-'))-1]) > 2:
+                            Address = re.findall(unicode('[\（|\(]([\S|\s]+)[\）\)]','utf8'),position)[0]
                     elif '概况' in T:
                         prop = re.findall(unicode('：([\S|\s]+)','utf8'),T)[0]
                         if '-' in prop:
@@ -108,22 +112,34 @@ class FIRSTFYCN(threading.Thread):
                                     Orientation = e
                                 else:
                                     type = e
+                        else:
+                             if "装修" in prop:
+                                 decoration = prop
+                             elif '东' in prop or '西' in prop or  '南' in prop or  '北' in prop:
+                                Orientation = prop
+                             else:
+                                type = prop
                     elif '楼层' in T:
-                        floor = re.findall('\d+',T)[0]
-                        floorAll = re.findall('\d+',T)[1]
+                        try:
+                            floor = re.findall('\d+',T)[0]
+                            floorAll = re.findall('\d+',T)[1]
+                        except:
+                            pass
                     elif '联系人' in T:
                         LandLadyName = re.findall(unicode('：([\S|\s]+)','utf8'),T)[0]
 
-                decoration = '未知'
-                Orientation = '未知'
+
                 describe =  sourcebsObj.findAll("div",{"class","des"})[0].text
 
                 pics = ''
-                for ele in sourcebsObj.findAll('div',{"class","desc-image"}):
-                    pics += ele.findAll("img").attr["src"] + "|"
+                try:
+                    for ele in sourcebsObj.findAll('div',{"class","desc-image"}):
+                        pics += ele.findAll("img")[0].attrs["data-original"] + "|"
+                except:
+                    pass
 
-
-            except:
+            except Exception,exc:
+                print(exc)
                 print(SourceUrl)
 
             Sqlite = SqliteOpenClass()

@@ -57,7 +57,7 @@ class SOUFANG(threading.Thread):
         bsObj = getbsobj(SearchUrl)
         try:
             LandLadyPhone = bsObj.findAll(id='tel')[0].string
-            LandLadyName  = bsObj.findAll('div',{"class","info-right-div"})[0].contents[1].contents[1].contents[3].string
+            #LandLadyName  = bsObj.findAll('div',{"class","info-right-div"})[0].contents[1].contents[1].contents[3].string
             Urls = re.findall('(http:\/\/[\w]+[\w\-\.,@?^=%&:/~\+#]*[\w\-\@?^=%&/~\+#])',bsObj.findAll("script")[12].text)
             SourceUrl = ''
             for url in Urls:
@@ -75,8 +75,7 @@ class SOUFANG(threading.Thread):
                 buf = StringIO( response.read())
                 f = gzip.GzipFile(fileobj=buf)
                 data = unicode(f.read(),'gbk')
-                #data = re.sub('\<script[\S|\s]+?script\>','',data)
-                sourcebsObj = BeautifulSoup(data)
+
 
             square = ''
             floorAll = ''
@@ -97,51 +96,60 @@ class SOUFANG(threading.Thread):
 
             Sqlite = SqliteOpenClass()
 
-            for ele in sourcebsObj.findAll("ul",{"class","house-info"})[0]:
-                try:
-                    text = re.sub('[\r\n\t ]','',ele.text)
-                except:
-                    continue
-                if '租金' in text:
-                    price = ele.contents[1].string
-                elif '概况' in text:
-                    props = text.split('：')[1].split('|')
-                    for con in props:
-                        if '室' in con:
-                            rooms = con
-                        elif 'm²' in con:
-                            square = con
-                        elif '/' in con and '层' in con:
-                            floor = re.findall('\d+',con)[0]
-                            floorAll = re.findall('\d+',con)[1]
-                        elif '东' in con or '西' in con or '南' in con or '北' in con:
-                            Orientation = con
-                        elif '装修' in con or '不限' in con:
-                            decoration = con
-                        else:
-                            type = con
-                elif '小区' in text:
-                    EstateName = re.findall(unicode('：([\W|\w]+?)\[','utf8'),text)[0]
-                    try:
-                        District = re.findall('\[([\W|\w]+?)\/'.text)[0]
-                        Area = re.findall('\/([\W|\w]+?)\]',text)[0]
-                    except:
-                        Area = Sqlite.getestatelinkwithname(EstateName)
-                        District = Sqlite.getareadistrict(Area)
+            for element in re.findall('\<ul[\S|\s]+?ul\>',data):
+                if '<li class="chuang">' in element:
+                    ull = BeautifulSoup(element)
+                    appliance = re.sub('\n','|',ull.findAll("ul")[0].text)
+                elif 'house-info' in element:
+                    ull = BeautifulSoup(element)
+                    for ele in ull.findAll("ul")[0]:
+                        try:
+                            text = re.sub('[\r\n\t ]','',ele.text)
+                        except:
+                            continue
+                        if '租金' in text:
+                            price = ele.contents[1].string
+                        elif '概况' in text:
+                            props = text.split('：')[1].split('|')
+                            for con in props:
+                                if '室' in con:
+                                    rooms = con
+                                elif 'm²' in con:
+                                    square = con
+                                elif '/' in con and '层' in con:
+                                    floor = re.findall('\d+',con)[0]
+                                    floorAll = re.findall('\d+',con)[1]
+                                elif '东' in con or '西' in con or '南' in con or '北' in con:
+                                    Orientation = con
+                                elif '装修' in con or '不限' in con:
+                                    decoration = con
+                                else:
+                                    type = con
+                        elif '小区' in text:
+                            EstateName = re.findall(unicode('：([\W|\w]+?)\[','utf8'),text)[0]
+                            try:
+                                District = re.findall('\[([\S|\s]+?)\]',text)[0].split('/')[0]
+                                Area = re.findall('\[([\S|\s]+?)\]',text)[0].split('/')[1]
+                            except:
+                                Area = Sqlite.getestatelinkwithname(EstateName)
+                                District = Sqlite.getareadistrict(Area)
 
-            describe = sourcebsObj.findAll("div",{"class","agent-txt-per"})[0]
 
-            for ele in sourcebsObj.findAll("div",{"class","config-list"})[0].contents[0].contents:
-                appliance += ele.text + "|"
+
+            if len(re.findall('\<div class="agent-txt agent-txt-per floatl"\>([\S|\s]+?)\<\/div\>',data)) > 0:
+                describe = re.sub('\<[\S|\s]+?\>','',re.sub('[\r\n\t ]','',re.findall('\<div class="agent-txt agent-txt-per floatl"\>([\S|\s]+?)\<\/div\>',data)[0]))
+
+            if len(re.findall('\<span class="floatl name"\>([\S|\s]+?)\<\/span\>',data)) > 0:
+                LandLadyName = re.findall('\<span class="floatl name"\>([\S|\s]+?)\<\/span\>',data)[0]
 
             Address = ''
 
             #图片列表
             pics = ''
-            if len(sourcebsObj.findAll("div",{"class","fy-img"})) > 0:
-                if len(sourcebsObj.findAll("div",{"class","fy-img"})[0].findAll("img")) > 0:
-                    for ele in sourcebsObj.findAll("div",{"class","fy-img"})[0].findAll("img"):
-                        pics += ele.attrs['src'] + "|"
+            for ele in re.findall('\<img[\S|\s]+?\>',data):
+                if 'mt10' in ele:
+                    obj = BeautifulSoup(ele).findAll("img")[0]
+                    pics += obj.attrs['src'] + "|"
 
             standardName = Sqlite.getestatename(EstateName,Address)
 
