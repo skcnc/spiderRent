@@ -30,7 +30,7 @@ class FOCUSCN(threading.Thread):
                 self.LastUrl = urlbuff
             urlbuff = ''
             import time
-            time.sleep(30)  #每隔30s 启动一次查询
+            time.sleep(60)  #每隔60s 启动一次查询
             bsObj = getbsobj(self.StartUrl)
             UrlList = bsObj.findAll("div",{'class','sub-left-list'})[0].contents[1]
             count = 0

@@ -20,7 +20,21 @@ try:
     #模拟登陆至房探主页
     init()
     SOUFANG_thread  = SOUFANG(1)
-    SOUFANG_thread.crawler()
-    #SOUFANG_thread.crawler_level2("http://sh.fangtan007.com/fangwu/7306732.html")
+    time.sleep(5)
+    ANJUKE_thread = ANJUKE(2)
+    time.sleep(5)
+    FIRSTFYCN_thread = FIRSTFYCN(3)
+    time.sleep(5)
+    FOCUSCN_thread = FOCUSCN(4)
+    time.sleep(5)
+    GANJI_thread = GANJI(5)
+    time.sleep(5)
+    GRFY_thread = GRFY(6)
+    time.sleep(5)
+    WUBATONGCHENG = GRFY(7)
+    time.sleep(5)
+    quit = False
+    while quit == False:
+        time.sleep(1000)
 except Exception,ex:
     print(ex)

@@ -19,7 +19,7 @@ class ANJUKE:
                 self.LastUrl = urlbuff
             urlbuff = ''
             import time
-            time.sleep(30)  #每隔30s 启动一次查询
+            time.sleep(60)  #每隔60s 启动一次查询
             html = urlopen(StartUrl)
             bsObj = BeautifulSoup(html.read())
             UrlList = bsObj.findAll("div",{'class','zu-itemmod'})
