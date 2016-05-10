@@ -5,12 +5,21 @@ from Utils.UtilToolFunc import *
 from bs4 import BeautifulSoup
 import re
 import time
+import threading
 
 class GRFY:
     def __init__(self, threadno):
         self.THREADNO = threadno
         self.LastUrl = ''
-        self.BaseUrl = 'http://sh.grfy.net/rent/'
+        self.BaseUrl = 'http://sh.fangtan007.com'
+        self.thread_stop = False
+        self.StartUrl = "http://sh.fangtan007.com/chuzu/fangwu/w02/"
+
+    def run(self):
+        self.crawler(self.StartUrl)
+
+    def stop(self):
+        self.thread_stop = True
 
     def crawler(self,StartUrl):
         "http://sh.grfy.net/rent/list_2_0_0_0-0_0_0-0_0_2_0_1_.html"

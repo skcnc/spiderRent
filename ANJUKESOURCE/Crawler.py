@@ -4,11 +4,21 @@ from sqliteOper.Operations import *
 from Utils.UtilToolFunc import *
 from bs4 import BeautifulSoup
 import re
+import threading
 
-class ANJUKE:
+class ANJUKE(threading.Thread):
     def __init__(self, threadno):
         self.THREADNO = threadno
         self.LastUrl = ''
+        self.BaseUrl = 'http://sh.fangtan007.com'
+        self.thread_stop = False
+        self.StartUrl = "http://sh.fangtan007.com/chuzu/fangwu/w02/"
+
+    def run(self):
+        self.crawler(self.StartUrl)
+
+    def stop(self):
+        self.thread_stop = True
 
     def crawler(self,StartUrl):
         "http://sh.zu.anjuke.com/fangyuan/l2-px3/?kw=%E4%B8%AA%E4%BA%BA%E6%88%BF%E6%BA%90&cw=%E4%B8%AA%E4%BA%BA%E6%88%BF%E6%BA%90"
