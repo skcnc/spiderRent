@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7082206a-dac2-4f2c-8e44-33b016a484da" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HouseDB/HouseInfo" afterPath="$PROJECT_DIR$/HouseDB/HouseInfo" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ANJUKESOURCE/Crawler.py" afterPath="$PROJECT_DIR$/ANJUKESOURCE/Crawler.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CrawlerMain.py" afterPath="$PROJECT_DIR$/CrawlerMain.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FIRSTFYCN/Crawler.py" afterPath="$PROJECT_DIR$/FIRSTFYCN/Crawler.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FOCUSCN/Crawler.py" afterPath="$PROJECT_DIR$/FOCUSCN/Crawler.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GANJI/Crawler.py" afterPath="$PROJECT_DIR$/GANJI/Crawler.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GRFY/Crawler.py" afterPath="$PROJECT_DIR$/GRFY/Crawler.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SOUFANG/Crawler.py" afterPath="$PROJECT_DIR$/SOUFANG/Crawler.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WUBATONGCHENG/Crawler.py" afterPath="$PROJECT_DIR$/WUBATONGCHENG/Crawler.py" />
-    </list>
+    <list default="true" id="7082206a-dac2-4f2c-8e44-33b016a484da" name="Default" comment="" />
     <ignored path="SpiderCrawler.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -75,7 +65,7 @@
       <file leaf-file-name="Crawler.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/WUBATONGCHENG/Crawler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.07116105">
+            <state vertical-scroll-proportion="1.8501873">
               <caret line="32" column="32" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
               <folding />
             </state>
@@ -652,7 +642,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="1370" height="735" extended-state="0" />
+    <frame x="-7" y="0" width="1370" height="735" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14427482" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -665,7 +655,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32769555" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.50830567" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.50830567" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1129,7 +1119,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WUBATONGCHENG/Crawler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.07116105">
+        <state vertical-scroll-proportion="1.8501873">
           <caret line="32" column="32" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
           <folding />
         </state>
