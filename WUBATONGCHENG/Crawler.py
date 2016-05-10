@@ -14,9 +14,10 @@ class WUBATONGCHENG(threading.Thread):
         self.LastUrl = ''
         self.BaseUrl = 'http://sh.fangtan007.com'
         self.thread_stop = False
+        self.StartUrl = "http://sh.fangtan007.com/chuzu/fangwu/w01/"
 
-    def run(self,StartUrl):
-        self.crawler(StartUrl)
+    def run(self):
+        self.crawler(self.StartUrl)
 
     def stop(self):
         self.thread_stop = True
@@ -29,7 +30,7 @@ class WUBATONGCHENG(threading.Thread):
                 self.LastUrl = urlbuff
             urlbuff = ''
             import time
-            time.sleep(3)  #每隔30s 启动一次查询
+            time.sleep(60)  #每隔60s 启动一次查询
             bsObj = getbsobj(StartUrl)
             UrlList = bsObj.findAll("div",{'class','sub-left-list'})[0].contents[1]
             count = 0
@@ -75,6 +76,8 @@ class WUBATONGCHENG(threading.Thread):
             LandLadyName = ''
             Address = ''
             appliance = ''
+            district = ''
+            area = ''
             for ele in sourcebsObj.findAll("li",{"class","house-primary-content-li"}):
                 try:
                     prop = ele.contents[1].string
@@ -106,11 +109,11 @@ class WUBATONGCHENG(threading.Thread):
                         pass
                 elif "小区" in prop:
                     position = re.sub('[\t\n\r ]','',ele.contents[3].text).split('-')
-                    Distinct = position[0]
+                    district = position[0]
                     if len(position) == 3:
-                        Area = position[1]
+                        area = position[1]
                     else:
-                        Area = ''
+                        area = ''
 
                     EstateName = position[len(position)-1]
                     if '(' in EstateName:
@@ -152,7 +155,7 @@ class WUBATONGCHENG(threading.Thread):
                 Sqlite.insertpiclinks(id,pics)
                 Sqlite.inserthouse(id,EstateName,floorAll,floor,'','unknown','unknown',type,"整租",decoration,
                                    sourceType,LandLadyName,LandLadyPhone,price,"面议",countt,counth,countr,square,
-                                   Orientation,appliance, SourceUrl)
+                                   Orientation,appliance, SourceUrl,describe,district,area)
                 return
         except Exception,ex:
             print(ex)

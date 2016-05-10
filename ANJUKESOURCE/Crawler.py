@@ -19,7 +19,7 @@ class ANJUKE:
                 self.LastUrl = urlbuff
             urlbuff = ''
             import time
-            time.sleep(3)  #每隔30s 启动一次查询
+            time.sleep(60)  #每隔60s 启动一次查询
             html = urlopen(StartUrl)
             bsObj = BeautifulSoup(html.read())
             UrlList = bsObj.findAll("div",{'class','zu-itemmod'})
@@ -85,7 +85,7 @@ class ANJUKE:
                 id = uuid.uuid1()
                 Sqlite.inserthouse(id,EstateName,floorAll,floor,'','unknown','unknown',type,"整租","普通装修",
                                    sourceType,LandLadyName,LandLadyPhone,price,"面议",countt,counth,countr,square,
-                                   Orientation,'', SearchUrl)
+                                   Orientation,'', SearchUrl,describe,Distinct,Area)
                 return
         except Exception,ex:
             print(ex)

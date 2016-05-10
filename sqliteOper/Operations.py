@@ -11,7 +11,7 @@ sys.setdefaultencoding('utf-8')
 class SqliteOpenClass:
     def __init__(self):
         self.lock = threading.RLock()
-        self.dbpath = 'F:\项目文档\SpiderRent\spiderRent\HouseDB\HouseInfo'
+        self.dbpath = 'E:\python_project\spiderRent\HouseDB\HouseInfo'
 
     def get_conn(self):
         conn = sqlite3.connect( self.dbpath )
@@ -81,6 +81,28 @@ class SqliteOpenClass:
         connection.commit()
         self.conn_close(connection)
 
+    def getestatelinkwithname(self,name):
+        sql = "SELECT AREANAME FROM ESTATELINK WHERE ESTATENAME LIKE '%{0}%'".format(name.strip())
+        connection = self.get_conn()
+        value = connection.execute(sql)
+        connection.commit()
+        r = value.fetchall()
+        try:
+            return r[0][0]
+        except:
+            return ''
+
+    def getareadistrict(self,area):
+        sql = "SELECT DISTINCTNAME FROM DICS WHERE DISTINCTID IN (SELECT DISTINCTID FROM AREA WHERE AREANAME LIKE '%{0}%')".format(area.strip())
+        connection = self.get_conn()
+        value = connection.execute(sql)
+        connection.commit()
+        r = value.fetchall()
+        try:
+            return r[0][0]
+        except:
+            return ''
+
     def insertestatelink(self,area, name,link):
         sql = "INSERT INTO ESTATELINK VALUES ('{0}','{1}','{2}')".format(area ,name,link)
         connection = self.get_conn()
@@ -111,16 +133,16 @@ class SqliteOpenClass:
 
     def inserthouse(self,houseId,EstateName,FloorAll,Floor,FloorLevel,RoomNum,BuildingNo,Type,RentType,
                     Decoration,HouseSourceType,LandladyName,LandLadyPhone,RentPrice,PriceType,CountT,CountH,CountR,
-                    Square,Orientation,Appliance,link):
+                    Square,Orientation,Appliance,link,descibe,district,area):
         ISOTIMEFORMAT="%Y-%m-%d %X"
         curtime = time.strftime(ISOTIMEFORMAT, time.localtime())
 
-        sql_insert_house = "INSERT INTO House VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}')".format(
-            houseId,EstateName,curtime,str(FloorAll),str(Floor), '',RoomNum,BuildingNo,Type)
+        sql_insert_house = "INSERT INTO House VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}')".format(
+            houseId,EstateName,curtime,str(FloorAll),str(Floor), '',RoomNum,BuildingNo,Type,district,area)
 
-        sql_insert_houseinfo = "INSERT INTO HouseInfo VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}')".format(
+        sql_insert_houseinfo = "INSERT INTO HouseInfo VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}')".format(
             houseId,RentType,Decoration,HouseSourceType,LandladyName,LandLadyPhone,RentPrice,RentType,str(CountT),str(CountH),str(CountR),str(Square),
-            Orientation,Appliance,curtime,link)
+            Orientation,Appliance,curtime,link,descibe)
 
         conn = sqlite3.connect(self.dbpath)
         conn.execute(sql_insert_house)

@@ -21,7 +21,7 @@ class GRFY:
                 self.LastUrl = urlbuff
             urlbuff = ''
             import time
-            time.sleep(30)  #每隔30s 启动一次查询
+            time.sleep(60)  #每隔60s 启动一次查询
             html = urlopen(StartUrl)
             bsObj = BeautifulSoup(html.read())
             UrlList = bsObj.findAll(id="list")[0].contents[1].contents
@@ -54,7 +54,7 @@ class GRFY:
             rooms = content.contents[3].contents[3].contents[0].string.split('-')[0]
             square = content.contents[3].contents[3].contents[0].string.split('-')[1]
             EstateName = content.contents[5].contents[3].string
-            Distinct = content.contents[7].contents[3].string.split('-')[1]
+            District = content.contents[7].contents[3].string.split('-')[1]
             Area = content.contents[7].contents[3].string.split('-')[2]
             Address = content.contents[7].contents[3].string.split('-')[3]
             Orientation = content.contents[9].contents[3].string.split('-')[1]
@@ -82,7 +82,7 @@ class GRFY:
                 id = uuid.uuid1()
                 Sqlite.inserthouse(id,EstateName,floorAll,floor,'','unknown','unknown',type,"整租","普通装修",
                                    sourceType,LandLadyName,LandLadyPhone,price,"面议",countt,counth,countr,square,
-                                   Orientation,'',self.BaseUrl + SearchUrl)
+                                   Orientation,'',self.BaseUrl + SearchUrl,describe,District,Area)
                 return
         except Exception,ex:
             print(ex)

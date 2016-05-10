@@ -14,9 +14,10 @@ class GANJI(threading.Thread):
         self.LastUrl = ''
         self.BaseUrl = 'http://sh.fangtan007.com'
         self.thread_stop = False
+        self.StartUrl = "http://sh.fangtan007.com/chuzu/fangwu/w02/"
 
-    def run(self,StartUrl):
-        self.crawler(StartUrl)
+    def run(self):
+        self.crawler(self.StartUrl)
 
     def stop(self):
         self.thread_stop = True
@@ -29,7 +30,7 @@ class GANJI(threading.Thread):
                 self.LastUrl = urlbuff
             urlbuff = ''
             import time
-            time.sleep(3)  #每隔30s 启动一次查询
+            time.sleep(60)  #每隔60s 启动一次查询
             bsObj = getbsobj(StartUrl)
             UrlList = bsObj.findAll("div",{'class','sub-left-list'})[0].contents[1]
             count = 0
@@ -79,11 +80,13 @@ class GANJI(threading.Thread):
             counth = '0'
             countr = '0'
             countt = '0'
+            district = ''
+            area = ''
             for ele in sourcebsObj.findAll("ul",{"class","basic-info-ul"})[0].contents:
                 try:
                     prop = re.sub('[\t\r\n ]','',ele.text)
                 except:
-`                    continue;
+                   continue
                 if "户型" in prop:
                     try:
                         roomprops1 = prop.split('-')
@@ -105,23 +108,23 @@ class GANJI(threading.Thread):
                         else:
                             type = state
                 elif "小区" in prop:
-                    EstateName = re.findall(unicode('：([\W|\w]+)[-|\（]'),prop)[0]
+                    EstateName = re.findall(unicode('：([\W|\w]+)[-|\（|\(]'),prop)[0]
                 elif "楼层" in prop:
                     floor = re.findall('(\d+)',prop)[0]
                     floorAll = re.findall('(\d+)',prop)[1]
                 elif "位置" in prop:
                     position = re.findall(unicode('：([\W]+)','utf8'),re.sub(' ','',sourcebsObj.findAll("ul",{"class","basic-info-ul"})[0].contents[11].text))[0].split('-')
-                    Distinct = position[1]
+                    district = position[1]
                     if len(position) == 2:
-                        Area = position[1]
+                        area = position[1]
                     else:
-                        Area = position[2]
+                        area = position[2]
                 elif "地址" in prop:
                     Address = re.sub('[\t\n\r ]','',ele.contents[3].text)
                 elif "配置" in prop:
                     appliance = prop.split('：')[1]
 
-            LandLadyName = re.findall(unicode('：([\W]+)\(','utf8'),re.sub('[\r\n\t ]','',sourcebsObj.findAll("span",{"class","contact-col"})[0].text))[0]
+            LandLadyName = re.findall(unicode('：([\W|\w]+)\(','utf8'),re.sub('[\r\n\t ]','',sourcebsObj.findAll("span",{"class","contact-col"})[0].text))[0]
 
             #图片列表
             pics = ''
@@ -149,11 +152,12 @@ class GANJI(threading.Thread):
                 Sqlite.insertpiclinks(id,pics)
                 Sqlite.inserthouse(id,EstateName,floorAll,floor,'','unknown','unknown',type,rentType,decoration,
                                    sourceType,LandLadyName,LandLadyPhone,price,"面议",countt,counth,countr,square,
-                                   Orientation,appliance, SearchUrl)
+                                   Orientation,appliance, SearchUrl,describe,district,area)
                 return
         except Exception,ex:
             print(ex)
             print(SearchUrl)
+            print(SourceUrl)
             pass
 
 
