@@ -36,5 +36,13 @@ def checkDup(phone):
         return True
     else:
         Ladyphones.append(phone)
+        sql = SqliteOpenClass()
+        sql.insertdbphone(phone)
         return False
+
+def initphonelist(phone):
+    if phone == '':
+        return
+    for cur in phone:
+        Ladyphones.append(cur)
 

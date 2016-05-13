@@ -167,6 +167,24 @@ class SqliteOpenClass:
         conn.commit()
         conn.close()
 
+    def getdbphone(self):
+        sql = "SELECT * FROM PHONELIST"
+        conn = sqlite3.connect(self.dbpath)
+        value = conn.execute(sql)
+        conn.commit()
+        r = value.fetchall()
+        try:
+            return r
+        except:
+            return ''
+
+    def insertdbphone(self,phone):
+        sql = "INSERT INTO PHONELIST VALUES ('{0}')".format(phone)
+        conn = sqlite3.connect(self.dbpath)
+        conn.execute(sql)
+        conn.commit()
+        conn.close()
+
     def movehousedata(self):
         sqlA = "INSERT INTO HOUSEHIS SELECT * FROM HOUSE"
         sqlB = "INSERT INTO HOUSEINFOHIS SELECT * FROM HOUSEINFO"

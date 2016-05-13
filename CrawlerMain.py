@@ -5,12 +5,6 @@ from ANJUKESOURCE.Crawler import *
 from WUBATONGCHENG.Crawler import *
 from GANJI.Crawler import *
 from SOUFANG.Crawler import *
-from bs4 import BeautifulSoup
-import urllib
-import urllib2
-import cookielib
-from Utils.Opener import *
-import time
 from FOCUSCN.Crawler import *
 from FIRSTFYCN.Crawler import *
 
@@ -45,7 +39,7 @@ while quit == False:
     except Exception,ex:
         print("执行结束！")
         pass
-    time.sleep(600)
+    time.sleep(6000)
     Sql =SqliteOpenClass()
     Sql.movehousedata()
     SOUFANG_thread.stop()
@@ -55,4 +49,4 @@ while quit == False:
     GANJI_thread.stop()
     GRFY_thread.stop()
     WUBATONGCHENG_thread.stop()
-    time.sleep(10)
+    time.sleep(70)

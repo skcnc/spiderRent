@@ -90,9 +90,20 @@ class GRFY(threading.Thread):
             Sqlite = SqliteOpenClass()
             standardName = Sqlite.getestatename(EstateName,Address)
 
-            countr =  re.findall("\d+",rooms)[0]
-            counth =  re.findall("\d+",rooms)[1]
-            countt =  re.findall("\d+",rooms)[2]
+            try:
+                countr =  re.findall(unicode("(\d+)室"),rooms)[0]
+            except:
+                countr = 0
+
+            try:
+                counth =  re.findall(unicode("(\d+)厅"),rooms)[0]
+            except:
+                counth = 0
+
+            try:
+                countt =  re.findall(unicode("(\d+)卫"),rooms)[0]
+            except:
+                countt = 0
 
             #判断房源类型类型，根据描述中关键词判断
             sourceType = checkSourceType(describe)
