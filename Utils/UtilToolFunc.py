@@ -38,3 +38,10 @@ def checkDup(phone):
         Ladyphones.append(phone)
         return False
 
+def initPhonelady():
+    sql = SqliteOpenClass()
+    phones = sql.getphones()
+    strs = phones.split('|')
+    for str in strs:
+        Ladyphones.append(re.sub(' ','',str))
+

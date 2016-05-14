@@ -21,6 +21,7 @@ while quit == False:
     try:
     #模拟登陆至房探主页
         init()
+        initPhonelady()
         GRFY_thread = GRFY(6)
         GRFY_thread.start()
         time.sleep(5)
@@ -45,7 +46,7 @@ while quit == False:
     except Exception,ex:
         print("执行结束！")
         pass
-    time.sleep(600)
+    time.sleep(6000)
     Sql =SqliteOpenClass()
     Sql.movehousedata()
     SOUFANG_thread.stop()
