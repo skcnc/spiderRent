@@ -208,7 +208,7 @@ class SqliteOpenClass:
         conn.close()
 
     def getphones(self):
-        sql = "SELECT * FROM PHONELIB"
+        sql = "SELECT * FROM PHONELIST"
         PHONES = ''
         connection = self.get_conn()
         value = connection.execute(sql)

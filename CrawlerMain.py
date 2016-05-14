@@ -7,7 +7,7 @@ from GANJI.Crawler import *
 from SOUFANG.Crawler import *
 from FOCUSCN.Crawler import *
 from FIRSTFYCN.Crawler import *
-
+from Utils.SMTP import *
 
 
 quit = False
@@ -15,6 +15,7 @@ while quit == False:
     try:
     #模拟登陆至房探主页
         init()
+        sendmail("爬虫程序开始！")
         initPhonelady()
         GRFY_thread = GRFY(6)
         GRFY_thread.start()
@@ -38,7 +39,8 @@ while quit == False:
         WUBATONGCHENG_thread.start()
         time.sleep(5)
     except Exception,ex:
-        print("执行结束！")
+        print(ex)
+        sendmail(ex)
         pass
     time.sleep(6000)
     Sql =SqliteOpenClass()

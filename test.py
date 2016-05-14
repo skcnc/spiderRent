@@ -1,53 +1,36 @@
 #!/usr/bin/env python
 # -*- coding:utf8 -*-
-from GRFY.Crawler import *
-from ANJUKESOURCE.Crawler import *
-from WUBATONGCHENG.Crawler import *
-from GANJI.Crawler import *
-from SOUFANG.Crawler import *
-from bs4 import BeautifulSoup
-import urllib
-import urllib2
-import cookielib
-from Utils.Opener import *
-import time
-from FOCUSCN.Crawler import *
-from FIRSTFYCN.Crawler import *
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
+
+import smtplib
+from email.mime.text import MIMEText
+from email.header import Header
+
+# 第三方 SMTP 服务
+mail_host="smtp.scutech.com"  #设置服务器
+mail_user="suncheng@scutech.com"    #用户名
+mail_pass="Skcnc988330"   #口令
+
+
+sender = 'suncheng@scutech.com'
+receivers = ['suncheng@scutech.com']  # 接收邮件，可设置为你的QQ邮箱或者其他邮箱
+
+message = MIMEText('Python 邮件发送测试...', 'plain', 'utf-8')
+message['From'] = Header("菜鸟教程", 'utf-8')
+message['To'] =  Header("测试", 'utf-8')
+
+subject = 'Python SMTP 邮件测试'
+message['Subject'] = Header(subject, 'utf-8')
 
 
 try:
-    #模拟登陆至房探主页
-    init()
-    #GRFY_thread = GRFY(6)
-    #GRFY_thread.crawler_level2("d-11988407.html")
-    # time.sleep(5)
-    # SOUFANG_thread  = SOUFANG(1)
-    # SOUFANG_thread.start()
-    # time.sleep(5)
-    #ANJUKE_thread = ANJUKE(2)
-    #ANJUKE_thread.crawler_level2("http://sh.zu.anjuke.com/gfangyuan/69512100")
-    # time.sleep(5)
-    #FIRSTFYCN_thread = FIRSTFYCN(3)
-    #FIRSTFYCN_thread.crawler_level2("")
-    # time.sleep(5)
-    #FOCUSCN_thread = FOCUSCN(4)
-    #FOCUSCN_thread.crawler_level2("http://sh.fangtan007.com/fangwu/7115416.html")
-    # time.sleep(5)
-    GANJI_thread = GANJI(5)
-    GANJI_thread.crawler_level2("http://sh.fangtan007.com/fangwu/7332207.html")
-    # time.sleep(5)
-    # WUBATONGCHENG_thread = WUBATONGCHENG(7)
-    # WUBATONGCHENG_thread.start()
-    # time.sleep(5)
-    quit = False
-    while quit == False:
-        time.sleep(1000)
-except Exception,ex:
-    # SOUFANG_thread.stop()
-    # ANJUKE_thread.stop()
-    # FIRSTFYCN_thread.stop()
-    # FOCUSCN_thread.stop()
-    # GANJI_thread.stop()
-    # GRFY_thread.stop()
-    # WUBATONGCHENG_thread.stop()
-    print(ex)
+    smtpObj = smtplib.SMTP()
+    smtpObj.connect(mail_host, 25)    # 25 为 SMTP 端口号
+    smtpObj.login(mail_user,mail_pass)
+    smtpObj.sendmail(sender, receivers, message.as_string())
+    print "邮件发送成功"
+except smtplib.SMTPException,ex:
+    print (ex)
+    print "Error: 无法发送邮件"
+

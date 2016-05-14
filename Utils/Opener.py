@@ -20,10 +20,7 @@ def init():
     'records':'1'})
     url = 'http://sh.fangtan007.com/my/doLogin'
     result = opener.open(url,postdata)
-
-    sql = SqliteOpenClass()
-    dbphones = sql.getdbphone()
-    initphonelist(dbphones)
+    initPhonelady()
 
 
 def getbsobj(url):
