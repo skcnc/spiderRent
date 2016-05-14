@@ -36,6 +36,8 @@ def checkDup(phone):
         return True
     else:
         Ladyphones.append(phone)
+        sql = SqliteOpenClass()
+        sql.insertdbphone(phone)
         return False
 
 def initPhonelady():
@@ -44,4 +46,3 @@ def initPhonelady():
     strs = phones.split('|')
     for str in strs:
         Ladyphones.append(re.sub(' ','',str))
-

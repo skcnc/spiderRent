@@ -55,17 +55,46 @@ class ANJUKE(threading.Thread):
         html = urlopen(SearchUrl)
         bsObj = BeautifulSoup(html.read())
         try:
+            rooms = ''
+            square = ''
+            EstateName = ''
+            Distinct = ''
+            Area = ''
+            Address = ''
+            Orientation = ''
+            type = ''
+            floor = ''
+            floorAll = ''
+            renttype = ''
+            decoration = ''
             price = bsObj.findAll("span",{"class","f26"})[0].string
-            rooms = bsObj.findAll("dl",{"class","p_phrase"})[2].contents[3].string
-            square = bsObj.findAll("dl",{"class","p_phrase"})[7].contents[3].string
-            EstateName = bsObj.findAll("dl",{"class","p_phrase"})[11].contents[3].contents[1].string
-            Distinct = bsObj.findAll("dl",{"class","p_phrase"})[5].contents[3].contents[0].string
-            Area = bsObj.findAll("dl",{"class","p_phrase"})[5].contents[3].contents[2].string
-            Address = bsObj.findAll("dl",{"class","p_phrase"})[13].contents[3].contents[0]
-            Orientation = bsObj.findAll("dl",{"class","p_phrase"})[8].contents[3].string
-            type = bsObj.findAll("dl",{"class","p_phrase"})[10].contents[3].string
-            floor =bsObj.findAll("dl",{"class","p_phrase"})[9].contents[3].string.split('/')[0]
-            floorAll = bsObj.findAll("dl",{"class","p_phrase"})[9].contents[3].string.split('/')[1]
+            for ele in bsObj.findAll("dl",{"class","p_phrase"}):
+                try:
+                    if '房型' in ele.text:
+                        rooms = ele.contents[3].string
+                    elif '面积' in ele.text and  '总建' not in ele.text:
+                        square = ele.contents[3].string
+                    elif '小区名' in ele.text:
+                        EstateName = ele.contents[3].contents[1].string
+                    elif '版块' in ele.text:
+                        Distinct = ele.contents[3].contents[1].string
+                        Area = ele.contents[3].contents[3].string
+                    elif '地址' in ele.text:
+                        Address = ele.contents[3].contents[0]
+                    elif '朝向' in ele.text:
+                        Orientation = ele.contents[3].string
+                    elif '类型' in ele.text:
+                        type = ele.contents[3].string
+                    elif '楼层' in ele.text:
+                        floor = ele.contents[3].string.split('/')[0]
+                        floorAll = ele.contents[3].string.split('/')[1]
+                    elif '租赁方式' in ele.text:
+                        renttype = ele.contents[3].string
+                    elif '装修' in ele.text:
+                        decoration = ele.contents[3].string
+                except:
+                    continue
+
             LandLadyName = bsObj.findAll(id='broker_true_name')[0].string
             LandLadyPhone = re.sub(' ','',bsObj.findAll("div",{"class","broker_tel"})[0].contents[1])
             appliance = ''
@@ -86,9 +115,20 @@ class ANJUKE(threading.Thread):
             Sqlite = SqliteOpenClass()
             standardName = Sqlite.getestatename(EstateName,Address)
 
-            countr =  re.findall("\d+",rooms)[0]
-            counth =  re.findall("\d+",rooms)[1]
-            countt =  re.findall("\d+",rooms)[2]
+            try:
+                countr =  re.findall(unicode("(\d+)室"),rooms)[0]
+            except:
+                countr = 0
+
+            try:
+                counth =  re.findall(unicode("(\d+)厅"),rooms)[0]
+            except:
+                counth = 0
+
+            try:
+                countt =  re.findall(unicode("(\d+)卫"),rooms)[0]
+            except:
+                countt = 0
 
             #判断房源类型类型，根据描述中关键词判断
             sourceType = "个人房源"
@@ -97,7 +137,7 @@ class ANJUKE(threading.Thread):
                 return
             else :
                 id = uuid.uuid1()
-                Sqlite.inserthouse(id,EstateName,floorAll,floor,'','unknown','unknown',type,"整租","普通装修",
+                Sqlite.inserthouse(id,EstateName,floorAll,floor,'','unknown','unknown',type,renttype,decoration,
                                    sourceType,LandLadyName,LandLadyPhone,price,"面议",countt,counth,countr,square,
                                    Orientation,'', SearchUrl,describe,Distinct,Area)
                 return

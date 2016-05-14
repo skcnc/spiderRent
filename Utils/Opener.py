@@ -4,6 +4,8 @@ import urllib2
 import cookielib
 from bs4 import BeautifulSoup
 import threading
+from sqliteOper.Operations import *
+from Utils.UtilToolFunc import *
 
 opener = ''
 mutex = threading.Lock()
@@ -18,6 +20,11 @@ def init():
     'records':'1'})
     url = 'http://sh.fangtan007.com/my/doLogin'
     result = opener.open(url,postdata)
+
+    sql = SqliteOpenClass()
+    dbphones = sql.getdbphone()
+    initphonelist(dbphones)
+
 
 def getbsobj(url):
     global mutex

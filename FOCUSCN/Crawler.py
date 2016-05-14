@@ -33,7 +33,11 @@ class FOCUSCN(threading.Thread):
             import time
             time.sleep(60)  #每隔60s 启动一次查询
             bsObj = getbsobj(self.StartUrl)
-            UrlList = bsObj.findAll("div",{'class','sub-left-list'})[0].contents[1]
+            try:
+                UrlList = bsObj.findAll("div",{'class','sub-left-list'})[0].contents[1]
+            except:
+                print("获取失败：" + self.StartUrl)
+                continue
             count = 0
             for EleLi in UrlList:
                 try:
@@ -149,9 +153,20 @@ class FOCUSCN(threading.Thread):
 
             standardName = Sqlite.getestatename(EstateName,Address)
 
-            countr =  re.findall(unicode("(\d+)室"),rooms)[0]
-            counth =  re.findall(unicode("(\d+)厅"),rooms)[0]
-            countt =  re.findall(unicode("(\d+)卫"),rooms)[0]
+            try:
+                countr =  re.findall(unicode("(\d+)室"),rooms)[0]
+            except:
+                countr = 0
+
+            try:
+                counth =  re.findall(unicode("(\d+)厅"),rooms)[0]
+            except:
+                counth = 0
+
+            try:
+                countt =  re.findall(unicode("(\d+)卫"),rooms)[0]
+            except:
+                countt = 0
 
             #判断房源类型类型，根据描述中关键词判断
             sourceType = "个人房源"
