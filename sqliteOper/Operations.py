@@ -11,7 +11,7 @@ sys.setdefaultencoding('utf-8')
 class SqliteOpenClass:
     def __init__(self):
         self.lock = threading.RLock()
-        self.dbpath = 'E:\python_project\spiderRent\HouseDB\HouseInfo'
+        self.dbpath = 'F:\项目文档\SpiderRent\spiderRent\HouseDB\HouseInfo'
 
     def get_conn(self):
         conn = sqlite3.connect( self.dbpath )
@@ -64,8 +64,10 @@ class SqliteOpenClass:
         sql = "SELECT AliasA FROM EstateAlias WHERE AliasA like '%{0}%' OR AliasB like '%{1}%' OR AliasC like '%{2}%' OR AliasD like '%{3}%'".format(name,name,name,name)
         connection = self.get_conn()
         cur = connection.execute(sql)
+        data = cur.fetchall()
+        connection.commit()
         time.sleep(0.01)
-        if cur.arraysize == 0:
+        if len(data) == 0:
             sqlInsert = "INSERT INTO UnKnownEstateName VALUES ('{0}','{1}')".format(name,address)
             connection.execute(sqlInsert)
             self.conn_close(connection)
@@ -190,12 +192,14 @@ class SqliteOpenClass:
         sqlB = "INSERT INTO HOUSEINFOHIS SELECT * FROM HOUSEINFO"
         sqlC = "DELETE FROM HOUSE"
         sqlD = "DELETE FROM HOUSEINFO"
+        sqlE = "DELETE FROM PHONELIST"
 
         conn = sqlite3.connect(self.dbpath)
         conn.execute(sqlA)
         conn.execute(sqlB)
         conn.execute(sqlC)
         conn.execute(sqlD)
+        conn.execute(sqlE)
         conn.commit()
         conn.close()
 
@@ -217,6 +221,36 @@ class SqliteOpenClass:
         for phone in r:
             PHONES += phone[0] + "|"
         return PHONES
+
+    def checkdup(self,phone):
+        sql = "SELECT * FROM PHONELIST WHERE PHONE = '{0}'".format(phone)
+        connection = self.get_conn()
+        value = connection.execute(sql)
+        connection.commit()
+        r = value.fetchall()
+        if len(r) > 0:
+            return True;
+        else:
+            return False;
+
+    def getcurrentnum(self):
+        "获取House表房源数量"
+        sql = "SELECT COUNT(*) FROM HOUSE";
+        connection = self.get_conn()
+        cur = connection.execute(sql)
+        connection.commit()
+        value = cur.fetchall()
+        return value[0][0]
+
+    def gethisnum(self):
+        "获取历史表中字段数量"
+        sql = "SELECT COUNT(*) FROM HOUSEHIS";
+        connection = self.get_conn()
+        cur = connection.execute(sql)
+        connection.commit()
+        value = cur.fetchall()
+        return value[0][0]
+
 
 
 

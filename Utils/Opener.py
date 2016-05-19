@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup
 import threading
 from sqliteOper.Operations import *
 from Utils.UtilToolFunc import *
+from Utils.SMTP import *
 
 opener = ''
 mutex = threading.Lock()
@@ -20,7 +21,8 @@ def init():
     'records':'1'})
     url = 'http://sh.fangtan007.com/my/doLogin'
     result = opener.open(url,postdata)
-    initPhonelady()
+    print(result.msg)
+
 
 
 def getbsobj(url):
@@ -33,4 +35,7 @@ def getbsobj(url):
         return bsObj
     except Exception,ex:
         mutex.release()
+        if ex.args[0].errno != 10060:
+            init()
+        print(ex)
         return ''

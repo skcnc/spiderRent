@@ -15,7 +15,6 @@ while quit == False:
     try:
     #模拟登陆至房探主页
         init()
-        sendmail("爬虫程序开始！")
         initPhonelady()
         GRFY_thread = GRFY(6)
         GRFY_thread.start()
@@ -42,9 +41,15 @@ while quit == False:
         print(ex)
         sendmail(ex)
         pass
+
     time.sleep(6000)
-    Sql =SqliteOpenClass()
-    Sql.movehousedata()
+    print(str(ANJUKE_thread.isAlive()) + "|" + str(FIRSTFYCN_thread.isAlive()) + "|" + str(FOCUSCN_thread.isAlive()) + "|" + str(GANJI_thread.isAlive()) + "|" + str(GRFY_thread.isAlive()) + "|" + str(SOUFANG_thread.isAlive()) + "|" + str(WUBATONGCHENG_thread.isAlive()))
+    sql = SqliteOpenClass()
+    sendmail("检索状态：\n\r\t安居客：" + str(ANJUKE_thread.isAlive()) + "\r\n\t第一房源：" + str(FIRSTFYCN_thread.isAlive()) + "\r\n\t焦点房产：" + str(FOCUSCN_thread.isAlive()) + "\r\n\t赶集网：" + str(GANJI_thread.isAlive())
+             +  "\r\n\tGRFY：" +  str(GRFY_thread.isAlive()) + "\r\n\t搜房网：" + str(SOUFANG_thread.isAlive()) + "\r\n\t58同城：" + str(WUBATONGCHENG_thread.isAlive()) + "\r\n"
+             +  "上次循环获取房源总计：" + str(sql.getcurrentnum()) + "\r\n"
+             +  "历史房源总计：" + str(sql.gethisnum()))
+    sql.movehousedata()
     SOUFANG_thread.stop()
     ANJUKE_thread.stop()
     FIRSTFYCN_thread.stop()

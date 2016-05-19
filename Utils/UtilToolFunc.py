@@ -10,6 +10,8 @@ agency = ['本人中介']
 
 Ladyphones = []
 
+
+
 def checkSourceType(describe):
     "根据输入字符判断消息来源是房东/中介/租客"
     for word in landlady:
@@ -31,13 +33,13 @@ def checkSourceType(describe):
 
 
 def checkDup(phone):
-    phone = re.sub(' ','',phone)
+    phone = str(re.sub(' ','',phone))
+    sql = SqliteOpenClass()
 
-    if phone in Ladyphones:
+    if sql.checkdup(phone):
         return True
     else:
         Ladyphones.append(phone)
-        sql = SqliteOpenClass()
         sql.insertdbphone(phone)
         return False
 
@@ -45,5 +47,14 @@ def initPhonelady():
     sql = SqliteOpenClass()
     phones = sql.getphones()
     strs = phones.split('|')
-    for str in strs:
-        Ladyphones.append(re.sub(' ','',str))
+    for Astring in strs:
+        Ladyphones.append(str(re.sub(' ','',Astring)))
+
+
+
+
+
+
+
+
+
