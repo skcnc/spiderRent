@@ -3,6 +3,7 @@ from urllib import urlopen
 from sqliteOper.Operations import *
 from Utils.UtilToolFunc import *
 from bs4 import BeautifulSoup
+from Utils.FileOper import  *
 import re
 import time
 import threading
@@ -24,9 +25,8 @@ class GRFY(threading.Thread):
 
     def crawler(self,StartUrl):
         "http://sh.grfy.net/rent/list_2_0_0_0-0_0_0-0_0_2_0_1_.html"
-        LoopMark = True
         urlbuff = ''
-        while LoopMark == True:
+        while self.thread_stop != True:
             if urlbuff != '':
                 self.LastUrl = urlbuff
             urlbuff = ''
@@ -117,6 +117,8 @@ class GRFY(threading.Thread):
                                    Orientation,'',self.BaseUrl + SearchUrl,describe,District,Area)
                 return
         except Exception,ex:
+            Writelog(ex)
+            Writelog(SearchUrl)
             print(ex)
             print(SearchUrl)
             pass

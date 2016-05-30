@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup
 import re
 import threading
 from Utils.Opener import *
+from Utils.FileOper import *
 from StringIO import StringIO
 import gzip
 
@@ -184,6 +185,9 @@ class SOUFANG(threading.Thread):
                                    Orientation,appliance,SourceUrl,describe,District,Area)
                 return
         except Exception,ex:
+            Writelog(ex)
+            Writelog(SearchUrl)
+            Writelog(SourceUrl)
             print(ex)
             print(SearchUrl)
             print(SourceUrl)

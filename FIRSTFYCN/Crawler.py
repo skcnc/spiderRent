@@ -5,6 +5,7 @@ from Utils.UtilToolFunc import *
 from bs4 import BeautifulSoup
 import re
 import threading
+from Utils.FileOper import *
 from Utils.Opener import *
 
 class FIRSTFYCN(threading.Thread):
@@ -179,6 +180,8 @@ class FIRSTFYCN(threading.Thread):
                                    Orientation,appliance, SourceUrl,describe,district,area)
                 return
         except Exception,ex:
+            Writelog(ex)
+            Writelog(SearchUrl)
             print(ex)
             print(SearchUrl)
             pass

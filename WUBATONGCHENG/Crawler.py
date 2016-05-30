@@ -3,6 +3,7 @@ from urllib import urlopen
 from sqliteOper.Operations import *
 from Utils.UtilToolFunc import *
 from bs4 import BeautifulSoup
+from Utils.FileOper import *
 import re
 import threading
 from Utils.Opener import *
@@ -175,6 +176,8 @@ class WUBATONGCHENG(threading.Thread):
                                    Orientation,appliance, SourceUrl,describe,district,area)
                 return
         except Exception,ex:
+            Writelog(ex)
+            Writelog(SearchUrl)
             print(ex)
             print(SearchUrl)
             pass

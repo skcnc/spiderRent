@@ -2,6 +2,7 @@
 from urllib import urlopen
 from sqliteOper.Operations import *
 from Utils.UtilToolFunc import *
+from Utils.FileOper import  *
 from bs4 import BeautifulSoup
 import re
 import threading
@@ -174,6 +175,9 @@ class GANJI(threading.Thread):
                                    Orientation,appliance, SourceUrl,describe,district,area)
                 return
         except Exception,ex:
+            Writelog(ex)
+            Writelog(SearchUrl)
+            Writelog(SourceUrl)
             print(ex)
             print(SearchUrl)
             print(SourceUrl)

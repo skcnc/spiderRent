@@ -2,9 +2,11 @@
 from urllib import urlopen
 from sqliteOper.Operations import *
 from Utils.UtilToolFunc import *
+from Utils.FileOper import *
 from bs4 import BeautifulSoup
 import re
 import threading
+
 
 class ANJUKE(threading.Thread):
     def __init__(self, threadno):
@@ -142,6 +144,8 @@ class ANJUKE(threading.Thread):
                                    Orientation,'', SearchUrl,describe,Distinct,Area)
                 return
         except Exception,ex:
+            Writelog(ex)
+            Writelog(SearchUrl)
             print(ex)
             print(SearchUrl)
             pass

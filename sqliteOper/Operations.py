@@ -214,7 +214,7 @@ class SqliteOpenClass:
     def getphones(self):
         sql = "SELECT * FROM PHONELIST"
         PHONES = ''
-        connection = self.get_conn()
+        connection =  sqlite3.connect(self.dbpath)
         value = connection.execute(sql)
         connection.commit()
         r = value.fetchall()
@@ -223,8 +223,8 @@ class SqliteOpenClass:
         return PHONES
 
     def checkdup(self,phone):
-        sql = "SELECT * FROM PHONELIST WHERE PHONE = '{0}'".format(phone)
-        connection = self.get_conn()
+        sql = "SELECT * FROM PHONELIST WHERE PHONE like '%{0}%'".format(phone)
+        connection =  sqlite3.connect(self.dbpath)
         value = connection.execute(sql)
         connection.commit()
         r = value.fetchall()
@@ -236,7 +236,7 @@ class SqliteOpenClass:
     def getcurrentnum(self):
         "获取House表房源数量"
         sql = "SELECT COUNT(*) FROM HOUSE";
-        connection = self.get_conn()
+        connection =  sqlite3.connect(self.dbpath)
         cur = connection.execute(sql)
         connection.commit()
         value = cur.fetchall()
@@ -245,7 +245,7 @@ class SqliteOpenClass:
     def gethisnum(self):
         "获取历史表中字段数量"
         sql = "SELECT COUNT(*) FROM HOUSEHIS";
-        connection = self.get_conn()
+        connection =  sqlite3.connect(self.dbpath)
         cur = connection.execute(sql)
         connection.commit()
         value = cur.fetchall()
