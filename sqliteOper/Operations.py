@@ -58,7 +58,7 @@ class SqliteOpenClass:
         self.conn_close(connection)
         return cur[0]
 
-    def getestatename(self,name,address):
+    def getestatename(self,name,address,price):
         "小区名字重复性判断"
         name = name.strip()
         sql = "SELECT AliasA FROM EstateAlias WHERE AliasA like '%{0}%' OR AliasB like '%{1}%' OR AliasC like '%{2}%' OR AliasD like '%{3}%'".format(name,name,name,name)
@@ -67,11 +67,12 @@ class SqliteOpenClass:
         data = cur.fetchall()
         connection.commit()
         time.sleep(0.01)
-        if len(data) == 0:
+        if len(data) == 0 and int(price) > 7000:
             sqlInsert = "INSERT INTO UnKnownEstateName VALUES ('{0}','{1}')".format(name,address)
             connection.execute(sqlInsert)
+            connection.commit()
             self.conn_close(connection)
-            return ''
+            return name
         else :
             self.conn_close(connection)
             return name
@@ -106,7 +107,7 @@ class SqliteOpenClass:
             return ''
 
     def insertestatelink(self,area, name,link):
-        sql = "INSERT INTO ESTATELINK VALUES ('{0}','{1}','{2}')".format(area ,name,link)
+        sql = "INSERT INTO ESTATELINK VALUES ('{0}','{1}','{2}','Y')".format(area ,name,link)
         connection = self.get_conn()
         connection.execute(sql)
         connection.commit()
@@ -251,6 +252,30 @@ class SqliteOpenClass:
         value = cur.fetchall()
         return value[0][0]
 
+    def insertEstateAlias(self,estateid,aliasA,aliasB,aliasC,aliasD):
+        "添加ESTATEALIA记录"
+        sql = "INSERT INTO ESTATEALIAS VALUES ('{0}','{1}','{2}','{3}','{4}')".format(estateid,aliasA,aliasB,aliasC,aliasD)
+        connection = sqlite3.connect(self.dbpath)
+        connection.execute(sql)
+        connection.commit()
+        connection.close()
+
+    def insertTrafficTable(self,address,location,subwayA,stationA,disA,subwayB,stationB,disB,subwayC,stationC,disC,subwayD,stationD,disD):
+        "添加TRAFFIC记录"
+        sql = "UPDATE ESTATETRAFFIC SET LOCATION = '{0}',SUBWAY1= '{1}', STATION1='{10}',DISTANCE1 = '{2}',SUBWAY2= '{3}',STATION2='{11}', DISTANCE2 = '{4}',SUBWAY3= '{5}', " \
+              "STATION3='{12}',DISTANCE3 = '{6}',SUBWAY4= '{7}',STATION4='{13}', DISTANCE4 = '{8}' WHERE ADDRESS LIKE '%{9}%'".format(location,subwayA,disA,subwayB,disB,subwayC,disC,subwayD,
+                                                                                                                                     disD,address,stationA,stationB,stationC,stationD)
+        connection = sqlite3.connect(self.dbpath)
+        connection.execute(sql)
+        connection.commit()
+        connection.close()
+
+    def insertTrafficBasicInfo(self,address,Id,Estatetname):
+        sql = "INSERT INTO ESTATETRAFFIC (ID,ESTATENAME,ADDRESS) VALUES ('{0}','{1}','{2}')".format(Id,Estatetname,address)
+        connection = sqlite3.connect(self.dbpath)
+        connection.execute(sql)
+        connection.commit()
+        connection.close()
 
 
 

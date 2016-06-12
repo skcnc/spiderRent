@@ -17,6 +17,7 @@ class WUBATONGCHENG(threading.Thread):
         self.BaseUrl = 'http://sh.fangtan007.com'
         self.thread_stop = False
         self.StartUrl = "http://sh.fangtan007.com/chuzu/fangwu/w01/"
+        self.count = 0
 
     def run(self):
         self.crawler(self.StartUrl)
@@ -33,7 +34,10 @@ class WUBATONGCHENG(threading.Thread):
             urlbuff = ''
             import time
             time.sleep(60)  #每隔60s 启动一次查询
-            bsObj = getbsobj(StartUrl)
+            try:
+                bsObj = getbsobj(StartUrl)
+            except:
+                continue
             UrlList = bsObj.findAll("div",{'class','sub-left-list'})[0].contents[1]
             count = 0
             for EleLi in UrlList:
@@ -147,7 +151,7 @@ class WUBATONGCHENG(threading.Thread):
 
             describe = re.sub('[\r\n\t ]','',sourcebsObj.findAll("div",{"class","description-content"})[0].text)
 
-            standardName = Sqlite.getestatename(EstateName,Address)
+            standardName = Sqlite.getestatename(EstateName,Address,price)
 
             try:
                 countr =  re.findall(unicode("(\d+)室"),rooms)[0]
@@ -174,6 +178,7 @@ class WUBATONGCHENG(threading.Thread):
                 Sqlite.inserthouse(id,EstateName,floorAll,floor,'','unknown','unknown',type,"整租",decoration,
                                    sourceType,LandLadyName,LandLadyPhone,price,"面议",countt,counth,countr,square,
                                    Orientation,appliance, SourceUrl,describe,district,area)
+                self.count += 1
                 return
         except Exception,ex:
             Writelog(ex)

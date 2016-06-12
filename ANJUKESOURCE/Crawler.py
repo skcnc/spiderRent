@@ -15,6 +15,7 @@ class ANJUKE(threading.Thread):
         self.LastUrl = ''
         self.thread_stop = False
         self.StartUrl = "http://sh.zu.anjuke.com/fangyuan/l2-px3/?kw=%E4%B8%AA%E4%BA%BA%E6%88%BF%E6%BA%90&cw=%E4%B8%AA%E4%BA%BA%E6%88%BF%E6%BA%90"
+        self.count = 0
 
     def run(self):
         self.crawler(self.StartUrl)
@@ -32,7 +33,10 @@ class ANJUKE(threading.Thread):
             urlbuff = ''
             import time
             time.sleep(60)  #每隔60s 启动一次查询
-            html = urlopen(StartUrl)
+            try:
+                html = urlopen(StartUrl)
+            except:
+                continue;
             bsObj = BeautifulSoup(html.read())
             UrlList = bsObj.findAll("div",{'class','zu-itemmod'})
             count = 0
@@ -100,6 +104,9 @@ class ANJUKE(threading.Thread):
             LandLadyName = bsObj.findAll(id='broker_true_name')[0].string
             LandLadyPhone = re.sub(' ','',bsObj.findAll("div",{"class","broker_tel"})[0].contents[1])
             appliance = ''
+
+
+
             dupmark = checkDup(LandLadyPhone)
             if dupmark == True:
                 return
@@ -115,7 +122,7 @@ class ANJUKE(threading.Thread):
             describe = bsObj.findAll("div",{"class","pro_con"})[0].text
 
             Sqlite = SqliteOpenClass()
-            standardName = Sqlite.getestatename(EstateName,Address)
+            standardName = Sqlite.getestatename(EstateName,Address,price)
 
             try:
                 countr =  re.findall(unicode("(\d+)室"),rooms)[0]
@@ -142,6 +149,7 @@ class ANJUKE(threading.Thread):
                 Sqlite.inserthouse(id,EstateName,floorAll,floor,'','unknown','unknown',type,renttype,decoration,
                                    sourceType,LandLadyName,LandLadyPhone,price,"面议",countt,counth,countr,square,
                                    Orientation,'', SearchUrl,describe,Distinct,Area)
+                self.count += 1
                 return
         except Exception,ex:
             Writelog(ex)

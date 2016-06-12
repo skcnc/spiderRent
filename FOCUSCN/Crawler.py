@@ -17,6 +17,7 @@ class FOCUSCN(threading.Thread):
         self.BaseUrl = 'http://sh.fangtan007.com'
         self.thread_stop = False
         self.StartUrl = "http://sh.fangtan007.com/chuzu/fangwu/w13/"
+        self.count = 0
 
     def run(self):
         self.crawler()
@@ -33,7 +34,10 @@ class FOCUSCN(threading.Thread):
             urlbuff = ''
             import time
             time.sleep(60)  #每隔60s 启动一次查询
-            bsObj = getbsobj(self.StartUrl)
+            try:
+                bsObj = getbsobj(self.StartUrl)
+            except:
+                continue
             try:
                 UrlList = bsObj.findAll("div",{'class','sub-left-list'})[0].contents[1]
             except:
@@ -75,7 +79,10 @@ class FOCUSCN(threading.Thread):
                     break
             if SourceUrl == '':
                 return
-            sourceHtml = urlopen(SourceUrl)
+            try:
+                sourceHtml = urlopen(SourceUrl)
+            except:
+                return
             sourcebsObj = BeautifulSoup(sourceHtml.read())
 
             square = ''
@@ -88,6 +95,7 @@ class FOCUSCN(threading.Thread):
             appliance = ''
             district = ''
             area = ''
+            EstateName = ''
 
             try:
                 price = sourcebsObj.findAll("div",{"class","boxAtt"})[0].findAll("span")[0].string
@@ -143,7 +151,7 @@ class FOCUSCN(threading.Thread):
                 except:
                     pass
             except:
-                pass
+                return
 
             Sqlite = SqliteOpenClass()
 
@@ -152,7 +160,7 @@ class FOCUSCN(threading.Thread):
             except:
                 pass
 
-            standardName = Sqlite.getestatename(EstateName,Address)
+            standardName = Sqlite.getestatename(EstateName,Address,price)
 
             try:
                 countr =  re.findall(unicode("(\d+)室"),rooms)[0]
@@ -179,6 +187,8 @@ class FOCUSCN(threading.Thread):
                 Sqlite.inserthouse(id,EstateName,floorAll,floor,'','unknown','unknown',type,"整租",decoration,
                                    sourceType,LandLadyName,LandLadyPhone,price,"面议",countt,counth,countr,square,
                                    Orientation,appliance, SourceUrl,describe,district,area)
+
+                self.count += 1
                 return
         except Exception,ex:
             Writelog(ex)
