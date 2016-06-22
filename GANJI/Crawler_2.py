@@ -17,6 +17,8 @@ class GANJI2(threading.Thread):
         self.BaseUrl = 'http://sh.fangtan007.com'
         self.thread_stop = False
         self.StartUrl = "http://sh.fangtan007.com/chuzu/fangwu/w02/"
+        self.highcount = 0
+        self.count = 0
 
     def run(self):
         self.crawler(self.StartUrl)
@@ -62,8 +64,8 @@ class GANJI2(threading.Thread):
             LandLadyPhone = bsObj.findAll(id='tel')[0].string
 
             dupmark = checkDup(LandLadyPhone)
-            #if dupmark == True:
-            #    return
+            if dupmark == True:
+                return
 
             Urls = re.findall('(http:\/\/[\w]+[\w\-\.,@?^=%&:/~\+#]*[\w\-\@?^=%&/~\+#])',bsObj.findAll("script")[12].text)
             SourceUrl = ''
@@ -185,6 +187,9 @@ class GANJI2(threading.Thread):
                 Sqlite.inserthouse(id,EstateName,floorAll,floor,'','unknown','unknown',type,rentType,decoration,
                                    sourceType,LandLadyName,LandLadyPhone,price,"面议",countt,counth,countr,square,
                                    Orientation,appliance, SourceUrl,describe,district,area)
+                if int(price) >8000:
+                    self.highcount += 1
+                count += 1
                 return
         except Exception,ex:
             Writelog(ex)

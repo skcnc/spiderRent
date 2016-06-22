@@ -16,6 +16,7 @@ class ANJUKE(threading.Thread):
         self.thread_stop = False
         self.StartUrl = "http://sh.zu.anjuke.com/fangyuan/l2-px3/?kw=%E4%B8%AA%E4%BA%BA%E6%88%BF%E6%BA%90&cw=%E4%B8%AA%E4%BA%BA%E6%88%BF%E6%BA%90"
         self.count = 0
+        self.highcount =0
 
     def run(self):
         self.crawler(self.StartUrl)
@@ -150,6 +151,8 @@ class ANJUKE(threading.Thread):
                                    sourceType,LandLadyName,LandLadyPhone,price,"面议",countt,counth,countr,square,
                                    Orientation,'', SearchUrl,describe,Distinct,Area)
                 self.count += 1
+                if int(price) > 8000:
+                    self.highcount += 1
                 return
         except Exception,ex:
             Writelog(ex)

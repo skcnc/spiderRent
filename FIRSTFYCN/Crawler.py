@@ -18,6 +18,7 @@ class FIRSTFYCN(threading.Thread):
         self.thread_stop = False
         self.StartUrl = "http://sh.fangtan007.com/chuzu/fangwu/w24/"
         self.count = 0
+        self.highcount = 0
 
     def run(self):
         self.crawler()
@@ -183,6 +184,8 @@ class FIRSTFYCN(threading.Thread):
                                    sourceType,LandLadyName,LandLadyPhone,price,"面议",countt,counth,countr,square,
                                    Orientation,appliance, SourceUrl,describe,district,area)
                 self.count += 1
+                if int(price) > 8000:
+                    self.highcount += 1
                 return
         except Exception,ex:
             Writelog(ex)

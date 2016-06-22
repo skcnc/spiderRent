@@ -4,7 +4,7 @@ from GRFY.Crawler import *
 from ANJUKESOURCE.Crawler import *
 from WUBATONGCHENG.Crawler import *
 from GANJI.Crawler import *
-from SOUFANG.Crawler import *
+from SOUFANG.Crawler_2 import *
 from FOCUSCN.Crawler import *
 from FIRSTFYCN.Crawler import *
 from Utils.SMTP import *
@@ -27,7 +27,7 @@ while quit == False:
         GRFY_thread.LastUrl = GRFYURL
         GRFY_thread.start()
         time.sleep(5)
-        SOUFANG_thread  = SOUFANG(1)
+        SOUFANG_thread  = SOUFANG2(1)
         SOUFANG_thread.LastUrl = SOUFANGURL
         SOUFANG_thread.start()
         time.sleep(5)
@@ -61,15 +61,18 @@ while quit == False:
     sql = SqliteOpenClass()
     sendmail("检索状态：\n\r\t安居客：" + str(ANJUKE_thread.isAlive()) + "\r\n\t第一房源：" + str(FIRSTFYCN_thread.isAlive()) + "\r\n\t焦点房产：" + str(FOCUSCN_thread.isAlive()) + "\r\n\t赶集网：" + str(GANJI_thread.isAlive())
             +  "\r\n\tGRFY：" +  str(GRFY_thread.isAlive()) + "\r\n\t搜房网：" + str(SOUFANG_thread.isAlive()) + "\r\n\t58同城：" + str(WUBATONGCHENG_thread.isAlive()) + "\r\n"
-            +  "上次循环获取房源总计：" + str(sql.getcurrentnum()) + "\r\n"
-            +  "其中： \r\n"
-            +  "安居客：" + str(ANJUKE_thread.count) + "\r\n"
-            +  "第一房源："  + str(FIRSTFYCN_thread.count) + "\r\n"
-            +  "焦点房产：" + str(FOCUSCN_thread.count) + "\r\n"
-            +  "赶集网：" + str(GANJI_thread.count) + "\r\n"
-            +  "GRFY：" + str(GRFY_thread.count) + "\r\n"
-            +  "搜房网：" + str(SOUFANG_thread.count) + "\r\n"
-            +  "58同城：" + str(WUBATONGCHENG_thread.count) + "\r\n"
+            +  "上次循环获取房源总计："
+            + str(sql.getcurrentnum()) + " /" + str(ANJUKE_thread.highcount + FIRSTFYCN_thread.highcount
+                                                    + GANJI_thread.highcount + FOCUSCN_thread.highcount + GRFY_thread.highcount + SOUFANG_thread.highcount + WUBATONGCHENG_thread.highcount)
+            + "\r\n\r\n"
+            +  "其中： \r\n\r\n"
+            +  "安居客：" + str(ANJUKE_thread.count) + " /" + str(ANJUKE_thread.highcount) + "\r\n"
+            +  "第一房源："  + str(FIRSTFYCN_thread.count) + " /" + str(FIRSTFYCN_thread.highcount) + "\r\n"
+            +  "焦点房产：" + str(FOCUSCN_thread.count) + " /" + str(FOCUSCN_thread.highcount) + "\r\n"
+            +  "赶集网：" + str(GANJI_thread.count) +" /" + str(GANJI_thread.highcount) +  "\r\n"
+            +  "GRFY：" + str(GRFY_thread.count) + " /" + str(GRFY_thread.highcount) + "\r\n"
+            +  "搜房网：" + str(SOUFANG_thread.count) +" /" + str(SOUFANG_thread.highcount) +  "\r\n"
+            +  "58同城：" + str(WUBATONGCHENG_thread.count) + " /" + str(WUBATONGCHENG_thread.highcount) + "\r\n"
             +  "历史房源总计：" + str(sql.gethisnum()))
     sql.movehousedata()
     SOUFANGURL = SOUFANG_thread.LastUrl

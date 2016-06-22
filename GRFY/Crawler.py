@@ -17,6 +17,7 @@ class GRFY(threading.Thread):
         self.thread_stop = False
         self.StartUrl = "http://sh.grfy.net/rent/"
         self.count = 0
+        self.highcount = 0
 
     def run(self):
         self.crawler(self.StartUrl)
@@ -120,6 +121,8 @@ class GRFY(threading.Thread):
                                    sourceType,LandLadyName,LandLadyPhone,price,"面议",countt,counth,countr,square,
                                    Orientation,'',self.BaseUrl + SearchUrl,describe,District,Area)
                 self.count += 1
+                if int(price) > 8000:
+                    self.highcount += 1
                 return
         except Exception,ex:
             Writelog(ex)
